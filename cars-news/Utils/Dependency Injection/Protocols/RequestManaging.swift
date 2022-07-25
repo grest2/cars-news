@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RequestManaging {
-    func fetchItems<T: Decodable>() async throws -> [T]
+    func fetchItems<T: Decodable>(type: T.Type) async throws -> PagedItems<T>
 }

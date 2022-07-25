@@ -16,13 +16,15 @@ class RequestService: RequestServicing {
         var req = URLRequest(url: url)
         req.httpMethod = "get"
         
-        let (data, response) = try await URLSession.shared.data(for: req)
+        print(Thread.current)
         
-        guard let response = response as? HTTPURLResponse else { return RequestHandeledData.error(message: "Error response cast") }
+        let result: Result = try await URLSession.shared.data(for: req)
+        
+        guard let response = result.response as? HTTPURLResponse else { return RequestHandeledData.error(message: "Error response cast") }
         
         switch response.statusCode {
         case 200...299:
-            return RequestHandeledData.success(data: data)
+            return RequestHandeledData.success(data: result.data)
             
         case 404:
             return RequestHandeledData.error(message: "Not found")
