@@ -8,9 +8,7 @@
 import Foundation
 
 class RequestManager: RequestManaging {
-//    private let requestService: RequestServicing = RequestService()
-    
-    private let requestService: RequestServicing = RegisterService.shared.resolve(type: RequestServicing.self)!
+    private let requestService: RequestServicing = DependencyContainer.resolve()
     
     func fetchItems<T: Decodable>(type: T.Type) async throws -> PagedItems<T> {
         let response = try await self.requestService.get()
@@ -28,7 +26,6 @@ class RequestManager: RequestManaging {
             } catch DecodingError.valueNotFound(let type, let context) {
                 throw AppErrors.decoding(message: "Decoding error, value not found, type: \(type), context: \(context.debugDescription)")
             } catch {
-                print(error.localizedDescription)
                 throw AppErrors.decoding(message: error.localizedDescription)
             }
         }

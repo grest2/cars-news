@@ -16,10 +16,12 @@ class RequestService: RequestServicing {
         var req = URLRequest(url: url)
         req.httpMethod = "get"
         
-        print(Thread.current)
-        
         let result: Result = try await URLSession.shared.data(for: req)
         
+        return self.requestResultHandling(result)
+    }
+    
+    private func requestResultHandling(_ result: Result) -> RequestHandeledData {
         guard let response = result.response as? HTTPURLResponse else { return RequestHandeledData.error(message: "Error response cast") }
         
         switch response.statusCode {

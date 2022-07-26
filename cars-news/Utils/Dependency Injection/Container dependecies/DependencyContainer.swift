@@ -8,12 +8,16 @@
 import Foundation
 
 class DependencyContainer {
-    private let registerService: RegisterServicing = RegisterService.shared
+    private static let registerService: RegisterServicing = RegisterService.shared
     
     // Регистрация зависимостей
-    func register() {
+    static func register() {
         self.registerService.register(type: RequestServicing.self, implementaion: RequestService())
         
         self.registerService.register(type: RequestManaging.self, implementaion: RequestManager())
+    }
+    
+    static func resolve<T>() -> T {
+        self.registerService.resolve(type: T.self)!
     }
 }

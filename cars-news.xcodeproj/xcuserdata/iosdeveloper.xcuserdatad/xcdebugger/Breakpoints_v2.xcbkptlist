@@ -78,9 +78,9 @@
             filePath = "cars-news/Utils/Dependency Injection/Implementation/RequestManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "fetchItems(type:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "fetchItems()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -94,8 +94,8 @@
             filePath = "cars-news/Utils/Dependency Injection/Implementation/RequestManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "fetchItems(type:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,15 +104,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DDF238D8-0438-430C-990F-0C55C8A8F770"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cars-news/Utils/Dependency Injection/Implementation/RequestManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "fetchItems(type:)"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "fetchItems()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -120,15 +120,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "359B9A2B-861C-4694-94E3-82AB57DC52B2"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cars-news/Utils/Dependency Injection/Implementation/RequestManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "fetchItems(type:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "fetchItems()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,9 +142,9 @@
             filePath = "cars-news/Utils/Dependency Injection/Implementation/RequestManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "fetchItems(type:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "fetchItems()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,9 +158,9 @@
             filePath = "cars-news/Utils/Dependency Injection/Implementation/RequestManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "fetchItems(type:)"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "fetchItems()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

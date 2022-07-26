@@ -9,13 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private let requestManager: RequestManaging = RequestManager()
+    private let requestManager: RequestManaging = DependencyContainer.resolve()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Task(priority: .background) {
-            print(Thread.current)
             let news = try? await self.requestManager.fetchItems(type: News.self)
         }
         

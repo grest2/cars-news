@@ -128,10 +128,10 @@
 		4496BE7B288F259C00C95E4C /* cars-news */ = {
 			isa = PBXGroup;
 			children = (
+				4496BEAC288F26E700C95E4C /* Models */,
 				4496BEBE288F3C2300C95E4C /* Errors */,
 				4496BEBD288F326F00C95E4C /* Controllers */,
 				4496BEAF288F27BA00C95E4C /* Utils */,
-				4496BEAC288F26E700C95E4C /* Models */,
 				4496BE7C288F259C00C95E4C /* AppDelegate.swift */,
 				4496BE7E288F259C00C95E4C /* SceneDelegate.swift */,
 				4496BE82288F259C00C95E4C /* Main.storyboard */,
