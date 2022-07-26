@@ -8,7 +8,9 @@
 import Foundation
 
 class RequestManager: RequestManaging {
-    private let requestService: RequestServicing = RequestService()
+//    private let requestService: RequestServicing = RequestService()
+    
+    private let requestService: RequestServicing = RegisterService.shared.resolve(type: RequestServicing.self)!
     
     func fetchItems<T: Decodable>(type: T.Type) async throws -> PagedItems<T> {
         let response = try await self.requestService.get()
