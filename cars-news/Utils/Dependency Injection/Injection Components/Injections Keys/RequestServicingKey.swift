@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct RequestServicingKey: InjectionKey {
+    static var current: RequestServicing = RequestService()
+}

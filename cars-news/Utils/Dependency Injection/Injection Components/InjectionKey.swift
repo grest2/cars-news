@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+public protocol InjectionKey {
+    associatedtype Value
+    
+    static var current: Self.Value { get set }
+}
+

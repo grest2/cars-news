@@ -8,8 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @Injected()
 
     private let requestManager: RequestManaging = RequestManager()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Task(priority: .background) {

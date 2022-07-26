@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4469D2F428900B9300BBD7E1 /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2F328900B9300BBD7E1 /* InjectionKey.swift */; };
+		4469D2F628900C0100BBD7E1 /* InjectedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2F528900C0100BBD7E1 /* InjectedValues.swift */; };
+		4469D2FA28900D8E00BBD7E1 /* RequestServicingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2F928900D8E00BBD7E1 /* RequestServicingKey.swift */; };
+		4469D2FC28900E4F00BBD7E1 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2FB28900E4F00BBD7E1 /* Injected.swift */; };
 		4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE7C288F259C00C95E4C /* AppDelegate.swift */; };
 		4496BE7F288F259C00C95E4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE7E288F259C00C95E4C /* SceneDelegate.swift */; };
 		4496BE81288F259C00C95E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE80288F259C00C95E4C /* ViewController.swift */; };
@@ -44,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4469D2F328900B9300BBD7E1 /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
+		4469D2F528900C0100BBD7E1 /* InjectedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValues.swift; sourceTree = "<group>"; };
+		4469D2F928900D8E00BBD7E1 /* RequestServicingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServicingKey.swift; sourceTree = "<group>"; };
+		4469D2FB28900E4F00BBD7E1 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		4496BE79288F259C00C95E4C /* cars-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cars-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4496BE7C288F259C00C95E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4496BE7E288F259C00C95E4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +100,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4469D2F228900B6F00BBD7E1 /* Injection Components */ = {
+			isa = PBXGroup;
+			children = (
+				4469D2F828900D6B00BBD7E1 /* Injections Keys */,
+				4469D2F328900B9300BBD7E1 /* InjectionKey.swift */,
+				4469D2F528900C0100BBD7E1 /* InjectedValues.swift */,
+				4469D2FB28900E4F00BBD7E1 /* Injected.swift */,
+			);
+			path = "Injection Components";
+			sourceTree = "<group>";
+		};
+		4469D2F828900D6B00BBD7E1 /* Injections Keys */ = {
+			isa = PBXGroup;
+			children = (
+				4469D2F928900D8E00BBD7E1 /* RequestServicingKey.swift */,
+			);
+			path = "Injections Keys";
+			sourceTree = "<group>";
+		};
 		4496BE70288F259C00C95E4C = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +194,7 @@
 		4496BEB0288F28AF00C95E4C /* Dependency Injection */ = {
 			isa = PBXGroup;
 			children = (
+				4469D2F228900B6F00BBD7E1 /* Injection Components */,
 				4496BEB2288F290400C95E4C /* Implementation */,
 				4496BEB1288F28EF00C95E4C /* Protocols */,
 			);
@@ -347,11 +375,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4496BE81288F259C00C95E4C /* ViewController.swift in Sources */,
+				4469D2F428900B9300BBD7E1 /* InjectionKey.swift in Sources */,
+				4469D2F628900C0100BBD7E1 /* InjectedValues.swift in Sources */,
 				4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */,
 				4496BEAE288F271400C95E4C /* News.swift in Sources */,
+				4469D2FC28900E4F00BBD7E1 /* Injected.swift in Sources */,
 				4496BEBA288F2F4100C95E4C /* RequestManaging.swift in Sources */,
 				4496BEB4288F291900C95E4C /* RequestServicing.swift in Sources */,
 				4496BE7F288F259C00C95E4C /* SceneDelegate.swift in Sources */,
+				4469D2FA28900D8E00BBD7E1 /* RequestServicingKey.swift in Sources */,
 				4496BEC0288F3C3200C95E4C /* Errors.swift in Sources */,
 				4496BEBC288F2F9F00C95E4C /* RequestManager.swift in Sources */,
 				4496BEB8288F2E8200C95E4C /* NetworkUtils.swift in Sources */,
