@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457EAF32893215700B890FC /* NewsViewModel.swift */; };
 		4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */; };
 		4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D30228902FB800BBD7E1 /* DependencyContainer.swift */; };
 		4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE7C288F259C00C95E4C /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4457EAF32893215700B890FC /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServicing.swift; sourceTree = "<group>"; };
 		4469D30228902FB800BBD7E1 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		4496BE79288F259C00C95E4C /* cars-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cars-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4457EAF22893214300B890FC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4457EAF32893215700B890FC /* NewsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		4469D2FD28902DFA00BBD7E1 /* Container dependecies */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 		4496BE7B288F259C00C95E4C /* cars-news */ = {
 			isa = PBXGroup;
 			children = (
+				4457EAF22893214300B890FC /* ViewModels */,
 				4496BEAC288F26E700C95E4C /* Models */,
 				4496BEBE288F3C2300C95E4C /* Errors */,
 				4496BEBD288F326F00C95E4C /* Controllers */,
@@ -371,6 +382,7 @@
 				4496BEC0288F3C3200C95E4C /* Errors.swift in Sources */,
 				4496BEBC288F2F9F00C95E4C /* RequestManager.swift in Sources */,
 				4496BEB8288F2E8200C95E4C /* NetworkUtils.swift in Sources */,
+				4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */,
 				4496BEB6288F29A800C95E4C /* RequestService.swift in Sources */,
 				4496BEC4288F3C7700C95E4C /* PagedItems.swift in Sources */,
 			);

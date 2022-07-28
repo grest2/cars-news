@@ -8,18 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    private let requestManager: RequestManaging = DependencyContainer.resolve()
     
+    private let newsViewModel: NewsViewModel = NewsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Task(priority: .background) {
-            let news = try? await self.requestManager.fetchItems(type: News.self)
-        }
         
+        self.newsViewModel.fetch()
     }
-
-
 }
 

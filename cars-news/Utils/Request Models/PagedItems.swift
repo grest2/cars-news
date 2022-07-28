@@ -15,4 +15,9 @@ class PagedItems<T: Decodable>: Decodable {
         case totalCount
         case items = "news"
     }
+    
+    init() {
+        self.totalCount = 0
+        self.items = []
+    }
 }
