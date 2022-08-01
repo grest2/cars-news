@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E53AA28986B1800163ECF /* FeedViewCell.swift */; };
 		4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457EAF32893215700B890FC /* NewsViewModel.swift */; };
 		4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */; };
 		4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D30228902FB800BBD7E1 /* DependencyContainer.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		443E53AA28986B1800163ECF /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		4457EAF32893215700B890FC /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServicing.swift; sourceTree = "<group>"; };
 		4469D30228902FB800BBD7E1 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
@@ -98,6 +100,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		443E53A728986AF500163ECF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				443E53A828986AFD00163ECF /* Cells */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		443E53A828986AFD00163ECF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				443E53A928986B0500163ECF /* CollectionViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		443E53A928986B0500163ECF /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				443E53AA28986B1800163ECF /* FeedViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		4457EAF22893214300B890FC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,9 +164,10 @@
 		4496BE7B288F259C00C95E4C /* cars-news */ = {
 			isa = PBXGroup;
 			children = (
-				4457EAF22893214300B890FC /* ViewModels */,
 				4496BEAC288F26E700C95E4C /* Models */,
+				4457EAF22893214300B890FC /* ViewModels */,
 				4496BEBE288F3C2300C95E4C /* Errors */,
+				443E53A728986AF500163ECF /* Components */,
 				4496BEBD288F326F00C95E4C /* Controllers */,
 				4496BEAF288F27BA00C95E4C /* Utils */,
 				4496BE7C288F259C00C95E4C /* AppDelegate.swift */,
@@ -373,6 +400,7 @@
 			files = (
 				4496BE81288F259C00C95E4C /* ViewController.swift in Sources */,
 				4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */,
+				443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */,
 				4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */,
 				4496BEAE288F271400C95E4C /* News.swift in Sources */,
 				4496BEBA288F2F4100C95E4C /* RequestManaging.swift in Sources */,
