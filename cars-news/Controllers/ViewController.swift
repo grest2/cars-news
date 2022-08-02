@@ -32,15 +32,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.newsViewModel.fetch()
+        self.setupCollectionViewLayput()
         
+        self.observeToNews()
+    }
+    
+    private func setupCollectionViewLayput() {
         self.collectionView.register(FeedViewCell.self, forCellWithReuseIdentifier: "newsCell")
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
         self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
-        
+    }
+    
+    private func observeToNews() {
         self.cancellableNews = self.newsViewModel.$news.sink(receiveValue: {
             [weak self] news in
             
@@ -58,6 +64,10 @@ extension ViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
             newsCell.setNewsInfo(news: self.newsViewModel.news.items[indexPath.row].title)
+            
+            self.newsViewModel.getImage(index: indexPath.row) {
+                newsCell.setImage(image: $0)
+            }
             
             return newsCell
         }

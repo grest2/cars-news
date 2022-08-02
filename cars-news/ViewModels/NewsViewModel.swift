@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 @MainActor final class NewsViewModel: ObservableObject {
     // MARK: Published props
@@ -15,10 +16,28 @@ import Foundation
     
     private let requestManager: RequestManaging = DependencyContainer.resolve()
     
+    init() {
+        self.fetch()
+    }
+    
     func fetch() {
         Task(priority: .background) {
             do {
                 self.news = try await self.requestManager.fetchItems(type: News.self)
+            } catch {
+                self.error = error.localizedDescription
+            }
+        }
+    }
+    
+    func getImage(index: Int, completion: @escaping (UIImage) -> Void) {
+        let url = self.news.items[index].titleImageUrl
+        
+        Task(priority: .background) {
+            do {
+                let image = try await self.requestManager.getImage(url: url)
+                
+                completion(image)
             } catch {
                 self.error = error.localizedDescription
             }

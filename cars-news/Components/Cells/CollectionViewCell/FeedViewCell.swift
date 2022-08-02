@@ -24,12 +24,13 @@ final class FeedViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
+        label.numberOfLines = 0
         
         return label
     }()
     
-    private lazy var mainStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.newsTitle, self.imageView])
+    private var mainStack: UIStackView = {
+        let stack = UIStackView()//(arrangedSubviews: [self.newsTitle, self.imageView])
         stack.distribution = .fill
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -59,8 +60,16 @@ final class FeedViewCell: UICollectionViewCell {
         self.newsTitle.text = title
     }
     
+    public func setImage(image: UIImage) {
+        self.imageView.image = image
+    }
+    
+    // MARK: private methods
     /// Set layout for news cell
     private func setupStyle() {
         self.addSubview(self.mainStack)
+        
+        self.mainStack.addArrangedSubview(self.newsTitle)
+        self.mainStack.addArrangedSubview(self.imageView)
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RequestServicing {
-    func get() async throws -> RequestHandeledData
+    func get(url: String) async throws -> RequestHandeledData
 }

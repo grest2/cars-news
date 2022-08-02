@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 class RequestManager: RequestManaging {
     private let requestService: RequestServicing = DependencyContainer.resolve()
     
     func fetchItems<T: Decodable>(type: T.Type) async throws -> PagedItems<T> {
-        let response = try await self.requestService.get()
+        let response = try await self.requestService.get(url: "https://webapi.autodoc.ru/api/news/1/15")
         switch response {
         case .error(let message):
             throw AppErrors.request(message: message)
@@ -28,6 +29,21 @@ class RequestManager: RequestManaging {
             } catch {
                 throw AppErrors.decoding(message: error.localizedDescription)
             }
+        }
+    }
+    
+    func getImage(url: String) async throws -> UIImage {
+        let response = try await self.requestService.get(url: url)
+        
+        switch response {
+        case .error(let message):
+            throw AppErrors.request(message: message)
+        case .success(let data):
+            if let image = UIImage(data: data) {
+                return image
+            }
+            
+            throw AppErrors.imageInit
         }
     }
 }

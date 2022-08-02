@@ -8,6 +8,8 @@
 import Foundation
 
 enum AppErrors: Error {
+    case imageInit
+    
     case request(message: String)
     case decoding(message: String)
 }

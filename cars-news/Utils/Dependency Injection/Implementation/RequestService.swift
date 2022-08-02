@@ -8,9 +8,9 @@
 import Foundation
 
 class RequestService: RequestServicing {
-    private let url: String = "https://webapi.autodoc.ru/api/news/1/15"
+//    private let url: String = "https://webapi.autodoc.ru/api/news/1/15"
     
-    func get() async throws -> RequestHandeledData {
+    func get(url: String) async throws -> RequestHandeledData {
         guard let url = URL(string: url) else { return RequestHandeledData.error(message: "Incorrect hosted url") }
         
         var req = URLRequest(url: url)
