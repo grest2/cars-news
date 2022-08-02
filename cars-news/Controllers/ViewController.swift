@@ -13,11 +13,21 @@ typealias CollectionViewDelegate = UICollectionViewDelegate & UICollectionViewDa
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var news: [News] = []
-    
     private var cancellableNews: AnyCancellable?
     
     private let newsViewModel: NewsViewModel = NewsViewModel()
+    
+    private let collectionViewLayout: UICollectionViewLayout = {
+        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+        let groupItems = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
+        
+        let layout = UICollectionViewCompositionalLayout(section: NSCollectionLayoutSection(group: groupItems))
+        
+        return layout
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +39,15 @@ class ViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        layout.minimumLineSpacing = 1.0
-        layout.minimumInteritemSpacing = 1.0
-        self.collectionView.setCollectionViewLayout(layout, animated: true)
+        self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
         
         self.cancellableNews = self.newsViewModel.$news.sink(receiveValue: {
             [weak self] news in
             
-            self?.news = news.items
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
+            if news.items.count > 0 {
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
             }
         })
     }
@@ -51,7 +57,7 @@ class ViewController: UIViewController {
 extension ViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
-            newsCell.setNewsInfo(news: self.news[indexPath.row])
+            newsCell.setNewsInfo(news: self.newsViewModel.news.items[indexPath.row].title)
             
             return newsCell
         }
@@ -59,6 +65,6 @@ extension ViewController: CollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.news.count
+        self.newsViewModel.news.items.count
     }
 }

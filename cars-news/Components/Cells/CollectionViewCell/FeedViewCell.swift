@@ -10,9 +10,32 @@ import UIKit
 
 final class FeedViewCell: UICollectionViewCell {
     // MARK: UI props for cell
-    private let mainStack: UIStackView = UIStackView()
-    private let newsHeader: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 25, height: 16))
-    private let newsImage: UIImageView = UIImageView()
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    private let newsTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .black
+        
+        return label
+    }()
+    
+    private lazy var mainStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [self.newsTitle, self.imageView])
+        stack.distribution = .fill
+        stack.axis = .vertical
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stack
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,40 +54,13 @@ final class FeedViewCell: UICollectionViewCell {
     }
     
     /// Set data to cell
-    /// - Parameter news: news model
-    public func setNewsInfo(news: News) {
-        self.newsHeader.text = news.title
+    /// - Parameter news: news title
+    public func setNewsInfo(news title: String) {
+        self.newsTitle.text = title
     }
     
     /// Set layout for news cell
     private func setupStyle() {
-        self.setupHeaderText()
-        
-        self.mainStack.axis = .vertical
-        
-        self.newsHeader.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.mainStack.addArrangedSubview(self.newsHeader)
-        
-        self.newsHeader.leftAnchor.constraint(equalTo: self.mainStack.leftAnchor).isActive = true
-        self.newsHeader.rightAnchor.constraint(equalTo: self.mainStack.rightAnchor).isActive = true
-        
-        self.mainStack.addArrangedSubview(self.newsImage)
-        
         self.addSubview(self.mainStack)
-        self.newsHeader.setBorder(color: .red)
-    }
-    
-    private func setupHeaderText() {
-        self.newsHeader.font = UIFont.boldSystemFont(ofSize: 16)
-        self.newsHeader.textColor = .black
-    }
-}
-
-
-extension UIView {
-    func setBorder(color: UIColor, width: CGFloat = 1) {
-        self.layer.borderColor = color.cgColor
-        self.layer.borderWidth = width
     }
 }
