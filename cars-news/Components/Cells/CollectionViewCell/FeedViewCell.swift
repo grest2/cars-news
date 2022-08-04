@@ -14,8 +14,7 @@ final class FeedViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
     }()
@@ -29,9 +28,28 @@ final class FeedViewCell: UICollectionViewCell {
         return label
     }()
     
-    private var mainStack: UIStackView = {
-        let stack = UIStackView()//(arrangedSubviews: [self.newsTitle, self.imageView])
+    private let newsSubtitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .gray
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private var labelsStack: UIStackView = {
+        let stack = UIStackView()
         stack.distribution = .fill
+        stack.spacing = 4
+        stack.axis = .vertical
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stack
+    }()
+    
+    private var mainStack: UIStackView = {
+        let stack = UIStackView()
+        stack.distribution = .fillEqually
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -54,22 +72,36 @@ final class FeedViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
     
-    /// Set data to cell
-    /// - Parameter news: news title
-    public func setNewsInfo(news title: String) {
+    /// Set text to labels
+    /// - Parameters:
+    ///   - title: title of the nws
+    ///   - subtitle: subtitle with published time
+    public func setNewsInfo(news title: String, subtitle: String) {
         self.newsTitle.text = title
+        self.newsSubtitle.text = subtitle.formatToDate()
     }
     
+    /// Set image for news cell
+    /// - Parameter image: downloaded image by url from model
     public func setImage(image: UIImage) {
         self.imageView.image = image
     }
     
     // MARK: private methods
+    
     /// Set layout for news cell
     private func setupStyle() {
+        self.labelsStack.addArrangedSubview(self.newsTitle)
+        self.labelsStack.addArrangedSubview(self.newsSubtitle)
+        
+        self.mainStack.addArrangedSubview(self.labelsStack)
+        self.mainStack.addArrangedSubview(self.imageView)
+        
         self.addSubview(self.mainStack)
         
-        self.mainStack.addArrangedSubview(self.newsTitle)
-        self.mainStack.addArrangedSubview(self.imageView)
+        self.mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        self.mainStack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.mainStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        self.mainStack.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
 }

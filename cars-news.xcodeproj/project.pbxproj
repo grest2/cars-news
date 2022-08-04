@@ -28,6 +28,7 @@
 		4496BEBC288F2F9F00C95E4C /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BEBB288F2F9F00C95E4C /* RequestManager.swift */; };
 		4496BEC0288F3C3200C95E4C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BEBF288F3C3200C95E4C /* Errors.swift */; };
 		4496BEC4288F3C7700C95E4C /* PagedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BEC3288F3C7700C95E4C /* PagedItems.swift */; };
+		44C33942289C54EE00ADBE7A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C33941289C54EE00ADBE7A /* StringExtension.swift */; };
 		44F391572899B6670069A767 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F391562899B6670069A767 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		4496BEBB288F2F9F00C95E4C /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		4496BEBF288F3C3200C95E4C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		4496BEC3288F3C7700C95E4C /* PagedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedItems.swift; sourceTree = "<group>"; };
+		44C33941289C54EE00ADBE7A /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		44F391562899B6670069A767 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				44F391562899B6670069A767 /* UIViewExtension.swift */,
+				44C33941289C54EE00ADBE7A /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				4496BEBA288F2F4100C95E4C /* RequestManaging.swift in Sources */,
 				44F391572899B6670069A767 /* UIViewExtension.swift in Sources */,
 				4496BEB4288F291900C95E4C /* RequestServicing.swift in Sources */,
+				44C33942289C54EE00ADBE7A /* StringExtension.swift in Sources */,
 				4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */,
 				4496BE7F288F259C00C95E4C /* SceneDelegate.swift in Sources */,
 				4496BEC0288F3C3200C95E4C /* Errors.swift in Sources */,

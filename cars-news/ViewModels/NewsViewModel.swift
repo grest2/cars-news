@@ -11,7 +11,6 @@ import UIKit
 @MainActor final class NewsViewModel: ObservableObject {
     // MARK: Published props
     @Published private(set) var news: PagedItems<News> = PagedItems<News>()
-    
     @Published private(set) var error: String?
     
     private let requestManager: RequestManaging = DependencyContainer.resolve()

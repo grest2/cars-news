@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(3/4))
         let groupItems = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
         
         let layout = UICollectionViewCompositionalLayout(section: NSCollectionLayoutSection(group: groupItems))
@@ -63,7 +63,8 @@ class ViewController: UIViewController {
 extension ViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
-            newsCell.setNewsInfo(news: self.newsViewModel.news.items[indexPath.row].title)
+            let item = self.newsViewModel.news.items[indexPath.row]
+            newsCell.setNewsInfo(news: item.title, subtitle: item.publishedDate)
             
             self.newsViewModel.getImage(index: indexPath.row) {
                 newsCell.setImage(image: $0)
