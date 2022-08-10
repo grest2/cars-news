@@ -14,7 +14,7 @@ final class FeedViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+//        imageView.contentMode = .scaleAspectFit
         
         return imageView
     }()
@@ -24,6 +24,7 @@ final class FeedViewCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -33,19 +34,9 @@ final class FeedViewCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .gray
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
-    }()
-    
-    private var labelsStack: UIStackView = {
-        let stack = UIStackView()
-        stack.distribution = .equalCentering
-        stack.spacing = 4
-        stack.axis = .vertical
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.setBorder(color: .red)
-        
-        return stack
     }()
     
     private var mainStack: UIStackView = {
@@ -53,7 +44,6 @@ final class FeedViewCell: UICollectionViewCell {
         stack.distribution = .fillEqually
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.setBorder(color: .blue)
         
         return stack
     }()
@@ -93,16 +83,22 @@ final class FeedViewCell: UICollectionViewCell {
     
     /// Set layout for news cell
     private func setupStyle() {
-        self.labelsStack.addArrangedSubview(self.newsTitle)
-        self.labelsStack.addArrangedSubview(self.newsSubtitle)
+        self.addSubview(self.newsTitle)
         
-        self.mainStack.addArrangedSubview(self.labelsStack)
+        self.newsTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
+        self.newsTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
+        
+        self.addSubview(self.newsSubtitle)
+        
+        self.newsSubtitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
+        self.newsSubtitle.topAnchor.constraint(equalTo: self.newsTitle.bottomAnchor, constant: 8).isActive = true
+        
         self.mainStack.addArrangedSubview(self.imageView)
         
         self.addSubview(self.mainStack)
         
         self.mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        self.mainStack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.mainStack.topAnchor.constraint(equalTo: self.newsSubtitle.bottomAnchor, constant: 12).isActive = true
         self.mainStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         self.mainStack.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }

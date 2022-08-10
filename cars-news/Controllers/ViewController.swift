@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(2/3))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
         let groupItems = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
         
         let layout = UICollectionViewCompositionalLayout(section: NSCollectionLayoutSection(group: groupItems))
