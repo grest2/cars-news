@@ -25,6 +25,7 @@ final class FeedViewCell: UICollectionViewCell {
         label.textColor = .black
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byTruncatingTail
         
         return label
     }()
@@ -87,6 +88,7 @@ final class FeedViewCell: UICollectionViewCell {
         
         self.newsTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         self.newsTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
+        self.newsTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 8).isActive = true
         
         self.addSubview(self.newsSubtitle)
         
@@ -97,9 +99,13 @@ final class FeedViewCell: UICollectionViewCell {
         
         self.addSubview(self.mainStack)
         
-        self.mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        self.mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         self.mainStack.topAnchor.constraint(equalTo: self.newsSubtitle.bottomAnchor, constant: 12).isActive = true
         self.mainStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         self.mainStack.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        
+        self.contentView.layer.cornerRadius = 12
+        
+        self.backgroundColor = .green
     }
 }

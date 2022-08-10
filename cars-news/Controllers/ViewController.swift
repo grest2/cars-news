@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         self.setupCollectionViewLayout()
         
         self.observeToNews()
+        
+        self.collectionView.backgroundColor = .red
     }
     
     private func setupCollectionViewLayout() {
