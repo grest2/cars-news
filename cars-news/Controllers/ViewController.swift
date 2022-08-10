@@ -18,10 +18,10 @@ class ViewController: UIViewController {
     private let newsViewModel: NewsViewModel = NewsViewModel()
     
     private let collectionViewLayout: UICollectionViewLayout = {
-        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(2/3))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(3/4))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let groupItems = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
         
         let layout = UICollectionViewCompositionalLayout(section: NSCollectionLayoutSection(group: groupItems))
@@ -32,12 +32,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupCollectionViewLayput()
+        self.setupCollectionViewLayout()
         
         self.observeToNews()
     }
     
-    private func setupCollectionViewLayput() {
+    private func setupCollectionViewLayout() {
         self.collectionView.register(FeedViewCell.self, forCellWithReuseIdentifier: "newsCell")
         
         self.collectionView.delegate = self

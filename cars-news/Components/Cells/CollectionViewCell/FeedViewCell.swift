@@ -39,10 +39,11 @@ final class FeedViewCell: UICollectionViewCell {
     
     private var labelsStack: UIStackView = {
         let stack = UIStackView()
-        stack.distribution = .fill
+        stack.distribution = .equalCentering
         stack.spacing = 4
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.setBorder(color: .red)
         
         return stack
     }()
@@ -52,6 +53,7 @@ final class FeedViewCell: UICollectionViewCell {
         stack.distribution = .fillEqually
         stack.axis = .vertical
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.setBorder(color: .blue)
         
         return stack
     }()
