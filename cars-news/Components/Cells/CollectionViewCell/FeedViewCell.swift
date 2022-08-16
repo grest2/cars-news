@@ -49,6 +49,7 @@ final class FeedViewCell: UICollectionViewCell {
         return stack
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -63,6 +64,7 @@ final class FeedViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
     }
     
     /// Set text to labels
@@ -99,13 +101,27 @@ final class FeedViewCell: UICollectionViewCell {
         
         self.addSubview(self.mainStack)
         
-        self.mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
+        self.mainStack.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         self.mainStack.topAnchor.constraint(equalTo: self.newsSubtitle.bottomAnchor, constant: 12).isActive = true
         self.mainStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         self.mainStack.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
-        self.contentView.layer.cornerRadius = 12
+        self.mainStack.backgroundColor = .clear
         
-        self.backgroundColor = .green
+        self.layersSetupStyle()
+        
+        self.backgroundColor = Colors.newsItemMain.color
+    }
+    
+    /// Set up layers style for shadow and border
+    private func layersSetupStyle() {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 12
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.shadowOffset = CGSize(width: -2, height: 4)
+        self.layer.shadowRadius = 4
     }
 }

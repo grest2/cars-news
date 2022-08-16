@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440F19AC28AC26520049A2EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440F19AB28AC26520049A2EE /* Colors.swift */; };
 		443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E53AA28986B1800163ECF /* FeedViewCell.swift */; };
 		4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457EAF32893215700B890FC /* NewsViewModel.swift */; };
 		4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		440F19AB28AC26520049A2EE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		443E53AA28986B1800163ECF /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		4457EAF32893215700B890FC /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServicing.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				4496BEC2288F3C6600C95E4C /* Request Models */,
 				4496BEB0288F28AF00C95E4C /* Dependency Injection */,
 				4496BEB7288F2E8200C95E4C /* NetworkUtils.swift */,
+				440F19AB28AC26520049A2EE /* Colors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4496BE81288F259C00C95E4C /* ViewController.swift in Sources */,
+				440F19AC28AC26520049A2EE /* Colors.swift in Sources */,
 				4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */,
 				443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */,
 				4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */,

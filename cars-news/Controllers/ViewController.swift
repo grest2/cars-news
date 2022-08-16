@@ -18,8 +18,9 @@ class ViewController: UIViewController {
     private let newsViewModel: NewsViewModel = NewsViewModel()
     
     private let collectionViewLayout: UICollectionViewLayout = {
-        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(2/3))
+        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalWidth(2/3))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
+        layoutItem.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: NSCollectionLayoutSpacing.fixed(12), top: nil, trailing: nil, bottom: nil)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
         let groupItems = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
         
         self.observeToNews()
         
-        self.collectionView.backgroundColor = .red
+        self.view.backgroundColor = Colors.background.color
     }
     
     private func setupCollectionViewLayout() {
@@ -46,6 +47,8 @@ class ViewController: UIViewController {
         self.collectionView.dataSource = self
         
         self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
+        
+        self.collectionView.backgroundColor = UIColor.clear
     }
     
     private func observeToNews() {
