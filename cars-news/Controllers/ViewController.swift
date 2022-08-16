@@ -18,14 +18,16 @@ class ViewController: UIViewController {
     private let newsViewModel: NewsViewModel = NewsViewModel()
     
     private let collectionViewLayout: UICollectionViewLayout = {
-        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalWidth(2/3))
+        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(2/3))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
-        layoutItem.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: NSCollectionLayoutSpacing.fixed(12), top: nil, trailing: nil, bottom: nil)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 0)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(2/3))
         let groupItems = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
         
-        let layout = UICollectionViewCompositionalLayout(section: NSCollectionLayoutSection(group: groupItems))
+        let sectionLayout = NSCollectionLayoutSection(group: groupItems)
+        
+        let layout = UICollectionViewCompositionalLayout(section: sectionLayout)
         
         return layout
     }()
