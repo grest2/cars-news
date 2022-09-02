@@ -14,6 +14,7 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var header: Header!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    private var selected: NewsViewInfo?
     private var cancellableNews: AnyCancellable?
     
     private let newsViewModel: NewsViewModel = NewsViewModel()
@@ -72,6 +73,20 @@ class NewsFeedViewController: UIViewController {
 
 // MARK: Collection View delegate and data source implementation
 extension NewsFeedViewController: CollectionViewDelegate {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? NewsViewController, let selected = selected {
+            dest.selected = self.selected
+//            dest.newsView.initialize(image: selected.image, title: selected.title, body: selected.body)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? FeedViewCell else { return }
+        self.selected = NewsViewInfo(title: self.newsViewModel.news?.items[indexPath.row].description ?? "Неизвестная новость", body: "Ошибка загрузки", image: cell.image)
+        
+        self.performSegue(withIdentifier: "showNews", sender: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
             let item = self.newsViewModel.news?.items[indexPath.row]

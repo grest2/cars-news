@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 final class FeedViewCell: UICollectionViewCell {
+    // MARK: public props
+    public var image: UIImage? {
+        self.imageView.image
+    }
+    
     // MARK: UI props for cell
     private let imageView: UIImageView = {
         let imageView = UIImageView()

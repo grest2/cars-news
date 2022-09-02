@@ -10,6 +10,8 @@
 		440F19AC28AC26520049A2EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440F19AB28AC26520049A2EE /* Colors.swift */; };
 		443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E53AA28986B1800163ECF /* FeedViewCell.swift */; };
 		44454A7C28C22FB200FC7ED4 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44454A7B28C22FB200FC7ED4 /* Header.swift */; };
+		44454A7E28C2384100FC7ED4 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44454A7D28C2384100FC7ED4 /* NewsView.swift */; };
+		44454A8128C2422400FC7ED4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44454A8028C2422400FC7ED4 /* NewsViewController.swift */; };
 		4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457EAF32893215700B890FC /* NewsViewModel.swift */; };
 		4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */; };
 		4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D30228902FB800BBD7E1 /* DependencyContainer.swift */; };
@@ -32,6 +34,7 @@
 		4496BEC4288F3C7700C95E4C /* PagedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BEC3288F3C7700C95E4C /* PagedItems.swift */; };
 		44C33942289C54EE00ADBE7A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C33941289C54EE00ADBE7A /* StringExtension.swift */; };
 		44F391572899B6670069A767 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F391562899B6670069A767 /* UIViewExtension.swift */; };
+		44F460BF28C245CB00907450 /* NewsViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F460BE28C245CB00907450 /* NewsViewInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,8 @@
 		440F19AB28AC26520049A2EE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		443E53AA28986B1800163ECF /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
 		44454A7B28C22FB200FC7ED4 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		44454A7D28C2384100FC7ED4 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		44454A8028C2422400FC7ED4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		4457EAF32893215700B890FC /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServicing.swift; sourceTree = "<group>"; };
 		4469D30228902FB800BBD7E1 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		4496BEC3288F3C7700C95E4C /* PagedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedItems.swift; sourceTree = "<group>"; };
 		44C33941289C54EE00ADBE7A /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		44F391562899B6670069A767 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		44F460BE28C245CB00907450 /* NewsViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +117,8 @@
 		443E53A728986AF500163ECF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				44454A7F28C2384800FC7ED4 /* Views */,
 				443E53A828986AFD00163ECF /* Cells */,
-				44454A7B28C22FB200FC7ED4 /* Header.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -131,6 +137,15 @@
 				443E53AA28986B1800163ECF /* FeedViewCell.swift */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		44454A7F28C2384800FC7ED4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				44454A7D28C2384100FC7ED4 /* NewsView.swift */,
+				44454A7B28C22FB200FC7ED4 /* Header.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4457EAF22893214300B890FC /* ViewModels */ = {
@@ -210,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				4496BEAD288F271400C95E4C /* News.swift */,
+				44F460BE28C245CB00907450 /* NewsViewInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -257,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				4496BE80288F259C00C95E4C /* NewsFeedViewController.swift */,
+				44454A8028C2422400FC7ED4 /* NewsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -439,10 +456,13 @@
 				44C33942289C54EE00ADBE7A /* StringExtension.swift in Sources */,
 				4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */,
 				4496BE7F288F259C00C95E4C /* SceneDelegate.swift in Sources */,
+				44454A7E28C2384100FC7ED4 /* NewsView.swift in Sources */,
 				4496BEC0288F3C3200C95E4C /* Errors.swift in Sources */,
 				4496BEBC288F2F9F00C95E4C /* RequestManager.swift in Sources */,
 				4496BEB8288F2E8200C95E4C /* NetworkUtils.swift in Sources */,
 				4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */,
+				44454A8128C2422400FC7ED4 /* NewsViewController.swift in Sources */,
+				44F460BF28C245CB00907450 /* NewsViewInfo.swift in Sources */,
 				4496BEB6288F29A800C95E4C /* RequestService.swift in Sources */,
 				4496BEC4288F3C7700C95E4C /* PagedItems.swift in Sources */,
 			);
