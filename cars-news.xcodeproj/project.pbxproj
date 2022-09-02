@@ -14,7 +14,7 @@
 		4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D30228902FB800BBD7E1 /* DependencyContainer.swift */; };
 		4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE7C288F259C00C95E4C /* AppDelegate.swift */; };
 		4496BE7F288F259C00C95E4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE7E288F259C00C95E4C /* SceneDelegate.swift */; };
-		4496BE81288F259C00C95E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE80288F259C00C95E4C /* ViewController.swift */; };
+		4496BE81288F259C00C95E4C /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE80288F259C00C95E4C /* NewsFeedViewController.swift */; };
 		4496BE84288F259C00C95E4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4496BE82288F259C00C95E4C /* Main.storyboard */; };
 		4496BE86288F259E00C95E4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4496BE85288F259E00C95E4C /* Assets.xcassets */; };
 		4496BE89288F259E00C95E4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4496BE87288F259E00C95E4C /* LaunchScreen.storyboard */; };
@@ -59,7 +59,7 @@
 		4496BE79288F259C00C95E4C /* cars-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cars-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4496BE7C288F259C00C95E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4496BE7E288F259C00C95E4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4496BE80288F259C00C95E4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4496BE80288F259C00C95E4C /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		4496BE83288F259C00C95E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4496BE85288F259E00C95E4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4496BE88288F259E00C95E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 		4496BEBD288F326F00C95E4C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4496BE80288F259C00C95E4C /* ViewController.swift */,
+				4496BE80288F259C00C95E4C /* NewsFeedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -423,7 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4496BE81288F259C00C95E4C /* ViewController.swift in Sources */,
+				4496BE81288F259C00C95E4C /* NewsFeedViewController.swift in Sources */,
 				440F19AC28AC26520049A2EE /* Colors.swift in Sources */,
 				4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */,
 				443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */,

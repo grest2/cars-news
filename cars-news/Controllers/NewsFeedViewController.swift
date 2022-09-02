@@ -10,7 +10,7 @@ import Combine
 
 typealias CollectionViewDelegate = UICollectionViewDelegate & UICollectionViewDataSource
 
-class ViewController: UIViewController {
+class NewsFeedViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var cancellableNews: AnyCancellable?
@@ -61,7 +61,6 @@ class ViewController: UIViewController {
             if news?.items.count ?? 0 > 0 {
                 DispatchQueue.main.async {
                     self?.refereshCollectionView()
-//                    self?.collectionView.reloadData()
                 }
             }
         })
@@ -69,7 +68,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: Collection View delegate and data source implementation
-extension ViewController: CollectionViewDelegate {
+extension NewsFeedViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
             let item = self.newsViewModel.news?.items[indexPath.row]
@@ -101,15 +100,6 @@ extension ViewController: CollectionViewDelegate {
     }
     
     private func refereshCollectionView() {
-//        var indexes: [IndexPath] = []
-//        let news = self.newsViewModel.news?.items ?? []
-//        var index = 0
-//        
-//        for _ in news {
-//            indexes.append(IndexPath(row: index, section: 0))
-//            index += 1
-//        }
-        
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
