@@ -11,6 +11,7 @@ import Combine
 typealias CollectionViewDelegate = UICollectionViewDelegate & UICollectionViewDataSource
 
 class NewsFeedViewController: UIViewController {
+    @IBOutlet weak var header: Header!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var cancellableNews: AnyCancellable?
@@ -40,6 +41,8 @@ class NewsFeedViewController: UIViewController {
         self.observeToNews()
         
         self.view.backgroundColor = Colors.background.color
+        
+        self.header.initalize(text: "Последние новости")
     }
     
     private func setupCollectionViewLayout() {

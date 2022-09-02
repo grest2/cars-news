@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		440F19AC28AC26520049A2EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440F19AB28AC26520049A2EE /* Colors.swift */; };
 		443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E53AA28986B1800163ECF /* FeedViewCell.swift */; };
+		44454A7C28C22FB200FC7ED4 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44454A7B28C22FB200FC7ED4 /* Header.swift */; };
 		4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457EAF32893215700B890FC /* NewsViewModel.swift */; };
 		4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */; };
 		4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D30228902FB800BBD7E1 /* DependencyContainer.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		440F19AB28AC26520049A2EE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		443E53AA28986B1800163ECF /* FeedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
+		44454A7B28C22FB200FC7ED4 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		4457EAF32893215700B890FC /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServicing.swift; sourceTree = "<group>"; };
 		4469D30228902FB800BBD7E1 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				443E53A828986AFD00163ECF /* Cells */,
+				44454A7B28C22FB200FC7ED4 /* Header.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44454A7C28C22FB200FC7ED4 /* Header.swift in Sources */,
 				4496BE81288F259C00C95E4C /* NewsFeedViewController.swift in Sources */,
 				440F19AC28AC26520049A2EE /* Colors.swift in Sources */,
 				4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */,
