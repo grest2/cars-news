@@ -43,7 +43,7 @@ class NewsFeedViewController: UIViewController {
         
         self.view.backgroundColor = Colors.background.color
         
-        self.header.initalize(text: "Последние новости")
+        self.header.initialize(text: "Последние новости")
     }
     
     private func setupCollectionViewLayout() {
@@ -74,15 +74,17 @@ class NewsFeedViewController: UIViewController {
 // MARK: Collection View delegate and data source implementation
 extension NewsFeedViewController: CollectionViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? NewsViewController, let selected = selected {
+        if let dest = segue.destination as? NewsViewController {
             dest.selected = self.selected
-//            dest.newsView.initialize(image: selected.image, title: selected.title, body: selected.body)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? FeedViewCell else { return }
-        self.selected = NewsViewInfo(title: self.newsViewModel.news?.items[indexPath.row].description ?? "Неизвестная новость", body: "Ошибка загрузки", image: cell.image)
+        
+        self.selected = NewsViewInfo(title: self.newsViewModel.news?.items[indexPath.row].title ?? "Неизвестная новость",
+                                     body: self.newsViewModel.news?.items[indexPath.row].description ?? "Ошибка загрузки",
+                                     image: cell.image)
         
         self.performSegue(withIdentifier: "showNews", sender: nil)
     }
@@ -90,7 +92,7 @@ extension NewsFeedViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
             let item = self.newsViewModel.news?.items[indexPath.row]
-            newsCell.setNewsInfo(news: item?.title ?? "Car title new", subtitle: item?.publishedDate ?? "Today")
+            newsCell.setNewsInfo(news: item?.title ?? "Новость о машине", subtitle: item?.publishedDate ?? "Сегодня")
             
             self.newsViewModel.getImage(index: indexPath.row) {
                 newsCell.setImage(image: $0)

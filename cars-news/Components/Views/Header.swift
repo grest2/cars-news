@@ -22,7 +22,7 @@ class Header: UIView {
         return label
     }()
     
-    func initalize(text: String) {
+    func initialize(text: String) {
         self.title.text = text
         
         self.styleSetup()
