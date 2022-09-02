@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         self.cancellableNews = self.newsViewModel.$news.sink(receiveValue: {
             [weak self] news in
             
-            if news.items.count > 0 {
+            if news?.items.count ?? 0 > 0 {
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
@@ -70,8 +70,8 @@ class ViewController: UIViewController {
 extension ViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
-            let item = self.newsViewModel.news.items[indexPath.row]
-            newsCell.setNewsInfo(news: item.title, subtitle: item.publishedDate)
+            let item = self.newsViewModel.news?.items[indexPath.row]
+            newsCell.setNewsInfo(news: item?.title ?? "Car title new", subtitle: item?.publishedDate ?? "Today")
             
             self.newsViewModel.getImage(index: indexPath.row) {
                 newsCell.setImage(image: $0)
@@ -83,6 +83,20 @@ extension ViewController: CollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.newsViewModel.news.items.count
+        self.newsViewModel.news?.items.count ?? 0
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        
+        let bottomDistance = scrollView.contentSize.height - scrollView.contentOffset.y
+        
+        if bottomDistance < height {
+            self.newsViewModel.fetch()
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 }

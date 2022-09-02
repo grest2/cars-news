@@ -10,7 +10,7 @@ import UIKit
 
 @MainActor final class NewsViewModel: ObservableObject {
     // MARK: Published props
-    @Published private(set) var news: PagedItems<News> = PagedItems<News>()
+    @Published private(set) var news: PagedItems<News>?
     @Published private(set) var error: String?
     
     private let requestManager: RequestManaging = DependencyContainer.resolve()
@@ -20,17 +20,33 @@ import UIKit
     }
     
     func fetch() {
-        Task(priority: .background) {
-            do {
-                self.news = try await self.requestManager.fetchItems(type: News.self)
-            } catch {
-                self.error = error.localizedDescription
+        if self.news == nil {
+            Task(priority: .background) {
+                do {
+                    self.news = try await self.requestManager.fetchItems(type: News.self, page: 1, count: 15)
+                } catch {
+                    self.error = error.localizedDescription
+                }
+            }
+        } else if let news = self.news {
+            if Utilities.shouldFetch(totalItems: news.totalCount, page: news.page, countOfItems: news.count) {
+                news.page += 1
+                Task(priority: .background) {
+                    do {
+                        let fetched = try await self.requestManager.fetchItems(type: News.self, page: news.page, count: news.count)
+                        
+                        self.news?.count = fetched.items.count
+                        self.news?.items.append(contentsOf: fetched.items)
+                    } catch {
+                        self.error = error.localizedDescription
+                    }
+                }
             }
         }
     }
     
     func getImage(index: Int, completion: @escaping (UIImage) -> Void) {
-        let url = self.news.items[index].titleImageUrl
+        let url = self.news?.items[index].titleImageUrl ?? "" // TODO: fallback uri
         
         Task(priority: .background) {
             do {

@@ -11,8 +11,8 @@ import UIKit
 class RequestManager: RequestManaging {
     private let requestService: RequestServicing = DependencyContainer.resolve()
     
-    func fetchItems<T: Decodable>(type: T.Type) async throws -> PagedItems<T> {
-        let response = try await self.requestService.get(url: "https://webapi.autodoc.ru/api/news/1/15")
+    func fetchItems<T: Decodable>(type: T.Type, page: Int, count: Int) async throws -> PagedItems<T> {
+        let response = try await self.requestService.get(url: "https://webapi.autodoc.ru/api/news/\(page)/\(count)")
         switch response {
         case .error(let message):
             throw AppErrors.request(message: message)

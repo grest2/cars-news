@@ -11,6 +11,9 @@ class PagedItems<T: Decodable>: Decodable {
     var totalCount: Int
     var items: [T]
     
+    var count: Int = 15
+    var page: Int = 1
+    
     enum CodingKeys: String, CodingKey {
         case totalCount
         case items = "news"
