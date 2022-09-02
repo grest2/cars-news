@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Header: UIView {
+final class Header: UIView {
     private var headerText: String = ""
     
     private let title: UILabel = {

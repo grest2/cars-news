@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class NewsView: UIView {
+final class NewsView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
