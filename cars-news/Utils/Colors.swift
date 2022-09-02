@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 enum Colors {
-    case newsItemMain, background
+    case newsItemMain, background, newsCellShadow
     
     var color: UIColor {
         switch self {
@@ -17,7 +17,10 @@ enum Colors {
             return UIColor.systemGray6
             
         case .background:
-            return UIColor(hue: 0, saturation: 0, brightness: 0.95, alpha: 0.8)
+            return UIColor(red: 255/255, green: 231/255, blue: 191/255, alpha: 1)
+            
+        case .newsCellShadow:
+            return UIColor(red: 161/255, green: 0, blue: 53/255, alpha: 0.8)
         }
     }
 }

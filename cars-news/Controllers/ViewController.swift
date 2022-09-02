@@ -51,6 +51,7 @@ class ViewController: UIViewController {
         self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
         
         self.collectionView.backgroundColor = UIColor.clear
+        self.collectionView.showsVerticalScrollIndicator = false
     }
     
     private func observeToNews() {
@@ -59,7 +60,8 @@ class ViewController: UIViewController {
             
             if news?.items.count ?? 0 > 0 {
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
+                    self?.refereshCollectionView()
+//                    self?.collectionView.reloadData()
                 }
             }
         })
@@ -94,9 +96,22 @@ extension ViewController: CollectionViewDelegate {
         if bottomDistance < height {
             self.newsViewModel.fetch()
             
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+            self.refereshCollectionView()
+        }
+    }
+    
+    private func refereshCollectionView() {
+//        var indexes: [IndexPath] = []
+//        let news = self.newsViewModel.news?.items ?? []
+//        var index = 0
+//        
+//        for _ in news {
+//            indexes.append(IndexPath(row: index, section: 0))
+//            index += 1
+//        }
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
         }
     }
 }
