@@ -57,10 +57,11 @@ final class NewsView: UIView {
     
     private let newsSrc: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = Colors.secondary.color
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.text = "Подробнее..."
         
         return label
     }()
@@ -104,7 +105,12 @@ final class NewsView: UIView {
         self.scrollView.addSubview(self.newsTextStack)
         
         self.newsTextStack.addArrangedSubview(self.newsTitle)
+        self.newsTextStack.addArrangedSubview(self.categoryType)
         self.newsTextStack.addArrangedSubview(self.newsText)
+        self.newsTextStack.addArrangedSubview(self.newsSrc)
+        self.newsTextStack.addArrangedSubview(self.publishedDateNews)
+        
+        self.newsTextStack.setCustomSpacing(400, after: self.newsSrc)
         
         self.imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
@@ -123,11 +129,17 @@ final class NewsView: UIView {
         self.newsTextStack.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         
         self.newsText.leadingAnchor.constraint(equalTo: self.newsTextStack.leadingAnchor, constant: 12).isActive = true
-//        self.newsText.trailingAnchor.constraint(equalTo: self.newsTextStack.trailingAnchor, constant: 12).isActive = true
         
         self.newsTitle.leadingAnchor.constraint(equalTo: self.newsTextStack.leadingAnchor, constant: 12).isActive = true
-//        self.newsText.trailingAnchor.constraint(equalTo: self.newsTextStack.trailingAnchor, constant: 12).isActive = true
+        
+        self.scrollView.delegate = self
         
         self.backgroundColor = Colors.background.color
+    }
+}
+
+extension NewsView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("_LOG_ did sroll")
     }
 }
