@@ -74,17 +74,17 @@
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnM-WM-GFv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p15-y2-vV9" customClass="NewsView" customModule="cars_news" customModuleProvider="target">
-                                <rect key="frame" x="20" y="0.0" width="374" height="896"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p15-y2-vV9" customClass="NewsView" customModule="cars_news" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="p15-y2-vV9" firstAttribute="top" secondItem="BnM-WM-GFv" secondAttribute="topMargin" id="2Ev-Rv-5cz"/>
-                            <constraint firstItem="p15-y2-vV9" firstAttribute="trailing" secondItem="BnM-WM-GFv" secondAttribute="trailingMargin" id="5xz-cx-IbQ"/>
-                            <constraint firstItem="p15-y2-vV9" firstAttribute="leading" secondItem="BnM-WM-GFv" secondAttribute="leadingMargin" id="Vcr-Uw-Yt2"/>
-                            <constraint firstItem="p15-y2-vV9" firstAttribute="bottom" secondItem="BnM-WM-GFv" secondAttribute="bottomMargin" id="ctY-Fv-M4k"/>
+                            <constraint firstAttribute="trailing" secondItem="p15-y2-vV9" secondAttribute="trailing" id="47O-La-are"/>
+                            <constraint firstItem="p15-y2-vV9" firstAttribute="top" secondItem="BnM-WM-GFv" secondAttribute="top" id="JRg-W3-cae"/>
+                            <constraint firstItem="p15-y2-vV9" firstAttribute="leading" secondItem="BnM-WM-GFv" secondAttribute="leading" id="fNS-6L-Dgs"/>
+                            <constraint firstAttribute="bottom" secondItem="p15-y2-vV9" secondAttribute="bottom" id="zxr-2M-PSA"/>
                         </constraints>
                     </view>
                     <connections>
@@ -93,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28u-mW-m21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="52"/>
+            <point key="canvasLocation" x="1208.6956521739132" y="51.5625"/>
         </scene>
     </scenes>
     <resources>

@@ -63,9 +63,7 @@ class NewsFeedViewController: UIViewController {
             [weak self] news in
             
             if news?.items.count ?? 0 > 0 {
-                DispatchQueue.main.async {
-                    self?.refereshCollectionView()
-                }
+                self?.refereshCollectionView()
             }
         })
     }
@@ -82,8 +80,13 @@ extension NewsFeedViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? FeedViewCell else { return }
         
-        self.selected = NewsViewInfo(title: self.newsViewModel.news?.items[indexPath.row].title ?? "Неизвестная новость",
-                                     body: self.newsViewModel.news?.items[indexPath.row].description ?? "Ошибка загрузки",
+        let i = indexPath.row
+        
+        self.selected = NewsViewInfo(title: self.newsViewModel.news?.items[i].title,
+                                     body: self.newsViewModel.news?.items[i].description,
+                                     category: self.newsViewModel.news?.items[i].categoryType,
+                                     publishedDate: self.newsViewModel.news?.items[i].publishedDate,
+                                     fullUrl: self.newsViewModel.news?.items[i].fullUrl,
                                      image: cell.image)
         
         self.performSegue(withIdentifier: "showNews", sender: nil)

@@ -14,7 +14,7 @@ final class NewsView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 12
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
         return imageView
     }()
@@ -37,59 +37,83 @@ final class NewsView: UIView {
     
     private let newsTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         
         return label
     }()
     
     private let newsText: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = Colors.secondary.color
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let newsSrc: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = Colors.secondary.color
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let categoryType: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = Colors.secondary.color
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let publishedDateNews: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = Colors.secondary.color
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         
         return label
     }()
     
     private let header: Header = Header()
     
-    public func initialize(image: UIImage?, title: String, body: String) {
+    public func initialize(image: UIImage?, title: String, body: String, date: String, fullUrl: String, category: String) {
         self.imageView.image = image
         self.newsTitle.text = title
         self.newsText.text = body
+        self.categoryType.text = category
+        self.publishedDateNews.text = date
         
         self.setupStyle()
     }
     
     private func setupStyle() {
-//        self.addSubview(header)
-//
-//        header.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-//        header.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-//        header.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        header.heightAnchor.constraint(equalToConstant: 60).isActive = true
-//
         self.addSubview(self.imageView)
         self.addSubview(self.scrollView)
         
-//        scrollView.topAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
-        self.imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        self.imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        self.imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        self.scrollView.addSubview(self.newsTextStack)
         
-        self.imageView.setBorder(color: .blue, width: 5)
+        self.newsTextStack.addArrangedSubview(self.newsTitle)
+        self.newsTextStack.addArrangedSubview(self.newsText)
+        
+        self.imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+        self.imageView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         
         self.scrollView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor).isActive = true
         self.scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         self.scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        
-        self.scrollView.setBorder(color: .red)
-        
-        self.scrollView.addSubview(self.newsTextStack)
         
         self.newsTextStack.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
         self.newsTextStack.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
@@ -98,13 +122,12 @@ final class NewsView: UIView {
         
         self.newsTextStack.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         
-        self.newsTextStack.addArrangedSubview(self.newsTitle)
-        self.newsTextStack.addArrangedSubview(self.newsText)
-        
         self.newsText.leadingAnchor.constraint(equalTo: self.newsTextStack.leadingAnchor, constant: 12).isActive = true
-        self.newsText.trailingAnchor.constraint(equalTo: self.newsTextStack.trailingAnchor, constant: 12).isActive = true
+//        self.newsText.trailingAnchor.constraint(equalTo: self.newsTextStack.trailingAnchor, constant: 12).isActive = true
         
         self.newsTitle.leadingAnchor.constraint(equalTo: self.newsTextStack.leadingAnchor, constant: 12).isActive = true
-        self.newsText.trailingAnchor.constraint(equalTo: self.newsTextStack.trailingAnchor, constant: 12).isActive = true
+//        self.newsText.trailingAnchor.constraint(equalTo: self.newsTextStack.trailingAnchor, constant: 12).isActive = true
+        
+        self.backgroundColor = Colors.background.color
     }
 }
