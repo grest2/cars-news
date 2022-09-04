@@ -54,7 +54,7 @@ final class NewsView: UIView {
     private let newsText: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = Colors.headerBackground.color
+        label.textColor = Colors.newsCellShadow.color
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         
@@ -65,11 +65,12 @@ final class NewsView: UIView {
         let button = UIButton(type: .system)
         
         button.layer.cornerRadius = 12
-        button.backgroundColor = Colors.headerBackground.color
+        button.backgroundColor = Colors.newsCellShadow.color
         button.clipsToBounds = true
         button.setTitle("Подробнее...", for: .normal)
-        button.tintColor = Colors.secondary.color
+        button.tintColor = .systemGray5
         button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         return button
@@ -77,7 +78,7 @@ final class NewsView: UIView {
     
     private let categoryType: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .systemGray5
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -88,7 +89,7 @@ final class NewsView: UIView {
     private let publishedDateNews: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = Colors.light.color
+        label.textColor = Colors.newsCellShadow.color
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         

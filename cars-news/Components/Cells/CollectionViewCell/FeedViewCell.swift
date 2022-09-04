@@ -127,7 +127,6 @@ final class FeedViewCell: UICollectionViewCell {
     private func layersSetupStyle() {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 12
-        self.layer.borderColor = Colors.newsCellShadow.color.cgColor
         
         self.layer.shadowColor = Colors.newsCellShadow.color.cgColor
         self.layer.shadowOpacity = 1
