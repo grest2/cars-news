@@ -19,6 +19,14 @@ class NewsFeedViewController: UIViewController {
     
     private let newsViewModel: NewsViewModel = NewsViewModel()
     
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        
+        spinner.color = Colors.newsCellShadow.color
+        
+        return spinner
+    }()
+    
     private let collectionViewLayout: UICollectionViewLayout = {
         let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(2/3))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
@@ -37,6 +45,7 @@ class NewsFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.addSpinner()
         self.setupCollectionViewLayout()
         
         self.observeToNews()
@@ -66,6 +75,17 @@ class NewsFeedViewController: UIViewController {
                 self?.refereshCollectionView()
             }
         })
+    }
+    
+    private func addSpinner() {
+        self.spinner.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(self.spinner)
+        
+        self.spinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        self.spinner.startAnimating()
     }
 }
 
@@ -116,6 +136,7 @@ extension NewsFeedViewController: CollectionViewDelegate {
         let bottomDistance = scrollView.contentSize.height - scrollView.contentOffset.y
         
         if bottomDistance < height {
+            self.spinner.startAnimating()
             self.newsViewModel.fetch()
             
             self.refereshCollectionView()
@@ -123,6 +144,7 @@ extension NewsFeedViewController: CollectionViewDelegate {
     }
     
     private func refereshCollectionView() {
+        self.spinner.stopAnimating()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
