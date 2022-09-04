@@ -302,8 +302,8 @@
             filePath = "cars-news/Components/Views/NewsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "initialize(image:title:body:date:fullUrl:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,9 +318,9 @@
             filePath = "cars-news/Components/Views/NewsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "openNewsSrc()"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "openNewsSrc(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

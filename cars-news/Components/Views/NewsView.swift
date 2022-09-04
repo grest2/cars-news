@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 final class NewsView: UIView {
+    private var srcUrl: String = ""
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -16,6 +18,7 @@ final class NewsView: UIView {
         imageView.layer.cornerRadius = 22
         imageView.clipsToBounds = true
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        imageView.isUserInteractionEnabled = true
         
         return imageView
     }()
@@ -72,6 +75,8 @@ final class NewsView: UIView {
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
@@ -102,6 +107,8 @@ final class NewsView: UIView {
         self.newsText.text = body
         self.categoryType.text = category
         self.publishedDateNews.text = "Дата размещения: \(date.formatToDate())"
+        self.srcUrl = fullUrl
+        
         
         self.setupStyle()
     }
@@ -120,6 +127,8 @@ final class NewsView: UIView {
         self.newsBodyStack.addArrangedSubview(self.newsText)
         self.newsBodyStack.addArrangedSubview(self.publishedDateNews)
         
+        self.srcNewsButton.addTarget(self, action: #selector(self.openNewsSrc(_:)), for: .touchUpInside)
+        
         self.imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.imageView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         self.imageView.heightAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.height * 0.6).isActive = true
@@ -133,10 +142,14 @@ final class NewsView: UIView {
         self.newsBodyStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6).isActive = true
         self.newsBodyStack.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 12).isActive = true
         
+        self.srcNewsButton.leadingAnchor.constraint(equalTo: self.newsTextStack.leadingAnchor).isActive = true
+        
         self.backgroundColor = Colors.background.color
     }
     
-    @objc func openNewsSrc() {
-        print("_LOG_ was open")
+    @objc func openNewsSrc(_ sender: UIButton) {
+        guard let url = URL(string: self.srcUrl) else { return }
+        
+        UIApplication.shared.open(url)
     }
 }

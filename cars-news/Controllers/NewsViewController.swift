@@ -14,6 +14,11 @@ class NewsViewController: UIViewController {
     var selected: NewsViewInfo?
     
     override func viewDidLoad() {
-        newsView.initialize(image: self.selected?.image, title: self.selected?.title ?? "Неизвестная новость", body: self.selected?.body ?? "Данные об этой новости еще не прогрузились...", date: self.selected?.publishedDate ?? "Сегодня", fullUrl: "https://www.autodoc.ru/", category: self.selected?.category ?? "Неизвестная категория")
+        newsView.initialize(image: self.selected?.image,
+                            title: self.selected?.title ?? "Неизвестная новость",
+                            body: self.selected?.body ?? "Данные об этой новости еще не прогрузились...",
+                            date: self.selected?.publishedDate ?? "Сегодня",
+                            fullUrl: self.selected?.fullUrl ?? "https://www.autodoc.ru/",
+                            category: self.selected?.category ?? "Неизвестная категория")
     }
 }
