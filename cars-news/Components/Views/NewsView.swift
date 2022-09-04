@@ -131,6 +131,8 @@ final class NewsView: UIView {
         
         self.imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.imageView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        self.imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        self.imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         self.imageView.heightAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.height * 0.6).isActive = true
         
         self.newsTextStack.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor, constant: 6).isActive = true
@@ -147,7 +149,7 @@ final class NewsView: UIView {
         self.backgroundColor = Colors.background.color
     }
     
-    @objc func openNewsSrc(_ sender: UIButton) {
+    @objc private func openNewsSrc(_ sender: UIButton) {
         guard let url = URL(string: self.srcUrl) else { return }
         
         UIApplication.shared.open(url)

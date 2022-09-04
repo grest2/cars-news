@@ -12,4 +12,27 @@ extension UIView {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
     }
+    
+    func tappingAnimation(_ completion: @escaping () -> Void) {
+        self.isUserInteractionEnabled = false
+        
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+            [weak self] in
+            
+            self?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }) {
+            _ in
+            
+            UIView.animate(withDuration: 0.1, delay: 1, options: .curveLinear, animations: {
+                [weak self] in
+                
+                self?.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }) {
+                [weak self] _ in
+                
+                self?.isUserInteractionEnabled = true
+                completion()
+            }
+        }
+    }
 }
