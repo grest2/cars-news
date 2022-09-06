@@ -16,7 +16,8 @@ final class NewsCellImageView: UIImageView {
     private let requestManager: RequestManaging = DependencyContainer.resolve()
     
     func getImage(url: String, id: Int) {
-        image = nil
+        image = Icons.fallback.icon
+        
         Task(priority: .userInitiated) {
             let image = try? await self.getImage(url: url, id: id)
             

@@ -17,15 +17,15 @@ enum RequestHandeledData {
     case success(data: Data)
 }
 
-
-
 enum Icons {
-    case goBack
+    case goBack, fallback
     
     var icon: UIImage? {
         switch self {
         case .goBack:
             return UIImage(named: "arrow.left.circle")
+        case .fallback:
+            return UIImage(named: "fallback")
         }
     }
 }

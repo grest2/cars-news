@@ -19,12 +19,12 @@ final class FeedViewCell: UICollectionViewCell {
     // MARK: UI props for cell
     private let imageView: NewsCellImageView = {
         let imageView = NewsCellImageView()
+        imageView.image = Icons.fallback.icon
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        imageView.initialize()
         
         return imageView
     }()
