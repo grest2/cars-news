@@ -14,14 +14,17 @@ final class FeedViewCell: UICollectionViewCell {
         self.imageView.image
     }
     
+    public var beforeReuse: (() -> Void)?
+    
     // MARK: UI props for cell
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
+    private let imageView: NewsCellImageView = {
+        let imageView = NewsCellImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        imageView.initialize()
         
         return imageView
     }()
@@ -72,24 +75,24 @@ final class FeedViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.imageView.isHidden = true
+        self.imageView.cancelImageFetching()
     }
     
     /// Set text to labels
     /// - Parameters:
     ///   - title: title of the nws
     ///   - subtitle: subtitle with published time
-    public func setNewsInfo(news title: String, subtitle: String) {
+    public func setNewsInfo(news title: String, subtitle: String, id: Int, url: String) {
         self.newsTitle.text = title
         self.newsSubtitle.text = subtitle.formatToDate()
+        
+        self.imageView.getImage(url: url, id: id)
     }
     
     /// Set image for news cell
     /// - Parameter image: downloaded image by url from model
-    public func setImage(image: UIImage) {
+    public func setImage(image: UIImage?) {
         self.imageView.image = image
-        
-        self.imageView.isHidden = false
     }
     
     // MARK: private methods

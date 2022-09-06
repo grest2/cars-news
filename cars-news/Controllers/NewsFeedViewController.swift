@@ -14,6 +14,8 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var header: Header!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    private let cache: NSCache = NSCache<AnyObject, UIImage>()
+    
     private var selected: NewsViewInfo?
     private var cancellableNews: AnyCancellable?
     
@@ -115,11 +117,8 @@ extension NewsFeedViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
             let item = self.newsViewModel.news?.items[indexPath.row]
-            newsCell.setNewsInfo(news: item?.title ?? "Новость о машине", subtitle: item?.publishedDate ?? "Сегодня")
+            newsCell.setNewsInfo(news: item?.title ?? "Новость о машине", subtitle: item?.publishedDate ?? "Сегодня", id: item?.id ?? -1, url: item?.titleImageUrl ?? "")
             
-            self.newsViewModel.getImage(index: indexPath.row) {
-                newsCell.setImage(image: $0)
-            }
             
             return newsCell
         }

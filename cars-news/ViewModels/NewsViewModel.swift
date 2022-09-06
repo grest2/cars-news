@@ -44,18 +44,4 @@ import UIKit
             }
         }
     }
-    
-    func getImage(index: Int, completion: @escaping (UIImage) -> Void) {
-        let url = self.news?.items[index].titleImageUrl ?? "" // TODO: fallback uri
-        
-        Task(priority: .background) {
-            do {
-                let image = try await self.requestManager.getImage(url: url)
-                
-                completion(image)
-            } catch {
-                self.error = error.localizedDescription
-            }
-        }
-    }
 }

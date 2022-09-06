@@ -33,6 +33,7 @@
 		4496BEC0288F3C3200C95E4C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BEBF288F3C3200C95E4C /* Errors.swift */; };
 		4496BEC4288F3C7700C95E4C /* PagedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BEC3288F3C7700C95E4C /* PagedItems.swift */; };
 		44C33942289C54EE00ADBE7A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C33941289C54EE00ADBE7A /* StringExtension.swift */; };
+		44C6248D28C7E320005E8F15 /* NewsCellImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6248C28C7E320005E8F15 /* NewsCellImageView.swift */; };
 		44F391572899B6670069A767 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F391562899B6670069A767 /* UIViewExtension.swift */; };
 		44F460BF28C245CB00907450 /* NewsViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F460BE28C245CB00907450 /* NewsViewInfo.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		4496BEBF288F3C3200C95E4C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		4496BEC3288F3C7700C95E4C /* PagedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedItems.swift; sourceTree = "<group>"; };
 		44C33941289C54EE00ADBE7A /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		44C6248C28C7E320005E8F15 /* NewsCellImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellImageView.swift; sourceTree = "<group>"; };
 		44F391562899B6670069A767 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		44F460BE28C245CB00907450 /* NewsViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 			children = (
 				44454A7F28C2384800FC7ED4 /* Views */,
 				443E53A828986AFD00163ECF /* Cells */,
+				44C6248C28C7E320005E8F15 /* NewsCellImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				44454A8128C2422400FC7ED4 /* NewsViewController.swift in Sources */,
 				44F460BF28C245CB00907450 /* NewsViewInfo.swift in Sources */,
 				4496BEB6288F29A800C95E4C /* RequestService.swift in Sources */,
+				44C6248D28C7E320005E8F15 /* NewsCellImageView.swift in Sources */,
 				4496BEC4288F3C7700C95E4C /* PagedItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
