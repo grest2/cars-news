@@ -11,11 +11,14 @@ extension String {
     /// Converting string date to format date
     /// - Parameter format: format for converting
     /// - Returns: formatted date string
-    func formatToDate(format: String = "mm/dd/yyyy") -> String {
+    func formatToDate() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = format
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
-        let converted = formatter.date(from: self) ?? Date()
-        return converted.formatted()
+        let converted = formatter.date(from: self)
+        formatter.timeStyle = .none
+        
+        
+        return converted?.formatted() ?? "Недавно"
     }
 }

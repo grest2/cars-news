@@ -11,7 +11,7 @@ class PagedItems<T: Decodable>: Decodable {
     var totalCount: Int
     var items: [T]
     
-    var count: Int = 15
+    var count: Int = 10
     var page: Int = 1
     
     enum CodingKeys: String, CodingKey {

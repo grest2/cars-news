@@ -13,9 +13,6 @@ final class FeedViewCell: UICollectionViewCell {
     public var image: UIImage? {
         self.imageView.image
     }
-    
-    public var beforeReuse: (() -> Void)?
-    
     // MARK: UI props for cell
     private let imageView: NewsCellImageView = {
         let imageView = NewsCellImageView()
