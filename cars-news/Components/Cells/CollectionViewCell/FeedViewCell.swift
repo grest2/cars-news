@@ -93,14 +93,13 @@ final class FeedViewCell: UICollectionViewCell {
     }
     
     // MARK: private methods
-    
     /// Set layout for news cell
     private func setupStyle() {
         self.addSubview(self.newsTitle)
         
         self.newsTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         self.newsTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
-        self.newsTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 8).isActive = true
+        self.newsTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
         
         self.addSubview(self.newsSubtitle)
         
