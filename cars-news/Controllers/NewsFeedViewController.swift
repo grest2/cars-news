@@ -167,8 +167,6 @@ extension NewsFeedViewController: CollectionViewDelegate {
             self.newsViewModel.fetch() {
                 self.refereshCollectionView()
             }
-
-            self.refereshCollectionView()
         }
     }
 
