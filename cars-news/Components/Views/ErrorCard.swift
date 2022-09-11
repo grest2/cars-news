@@ -18,14 +18,8 @@ final class ErrorCard: UIView {
         return label
     }()
     
-    func show(error: String?) {
+    func show(error: String) {
         self.label.text = error
-        self.isHidden = false
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.label.text = nil
-            self.isHidden = true
-        }
     }
     
     func initialize() {

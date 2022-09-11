@@ -45,7 +45,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmd-mX-Jqa" customClass="ErrorCard" customModule="cars_news" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmd-mX-Jqa" customClass="ErrorCard" customModule="cars_news" customModuleProvider="target">
                                 <rect key="frame" x="24" y="378" width="366" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>

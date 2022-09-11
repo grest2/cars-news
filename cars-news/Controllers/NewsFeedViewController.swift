@@ -10,15 +10,15 @@ import Combine
 
 typealias CollectionViewDelegate = UICollectionViewDelegate & UICollectionViewDataSource
 
-class NewsFeedViewController: UIViewController {
+final class NewsFeedViewController: UIViewController {
     @IBOutlet weak var header: Header!
     @IBOutlet weak var errorCard: ErrorCard!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private let cache: NSCache = NSCache<AnyObject, UIImage>()
-    
     private var selected: NewsViewInfo?
+    
     private var cancellableNews: AnyCancellable?
+    private var cancellableError: AnyCancellable?
     
     private let newsViewModel: NewsViewModel = NewsViewModel()
     
@@ -59,6 +59,12 @@ class NewsFeedViewController: UIViewController {
         self.header.initialize(text: "Последние новости")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.cancellableError?.cancel()
+        self.cancellableNews?.cancel()
+    }
+    
+    // MARK: private methods of news feed view controller
     private func setupCollectionViewLayout() {
         self.collectionView.register(FeedViewCell.self, forCellWithReuseIdentifier: "newsCell")
         
@@ -79,6 +85,14 @@ class NewsFeedViewController: UIViewController {
                 self?.refereshCollectionView()
             }
         })
+        
+        self.cancellableError = self.newsViewModel.$error.sink(receiveValue: {
+            [weak self] error in
+            
+            if let error = error, let self = self {
+                self.showError(error: error)
+            }
+        })
     }
     
     private func addSpinner() {
@@ -90,6 +104,16 @@ class NewsFeedViewController: UIViewController {
         self.spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         self.spinner.startAnimating()
+    }
+    
+    private func showError(error: String) {
+        self.errorCard.isHidden = false
+        
+        self.errorCard.show(error: error)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.errorCard.isHidden = true
+        }
     }
 }
 
