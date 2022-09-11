@@ -13,6 +13,7 @@ class RequestManager: RequestManaging {
     
     func fetchItems<T: Decodable>(type: T.Type, page: Int, count: Int) async throws -> PagedItems<T> {
         let response = try await self.requestService.get(url: "https://webapi.autodoc.ru/api/news/\(page)/\(count)")
+        
         switch response {
         case .error(let message):
             throw AppErrors.request(message: message)

@@ -15,21 +15,20 @@ import UIKit
     
     private let requestManager: RequestManaging = DependencyContainer.resolve()
     
-    init() {
-        self.fetch()
-    }
-    
-    func fetch() {
+    func fetch(success: @escaping () -> Void) {
         if self.news == nil {
             Task(priority: .background) {
                 do {
                     self.news = try await self.requestManager.fetchItems(type: News.self, page: 1, count: 10)
+                    self.news?.page = 1
+                    
+                    success()
                 } catch {
                     self.error = error.localizedDescription
                 }
             }
         } else if let news = self.news {
-            if Utilities.shouldFetch(totalItems: news.totalCount, page: news.page, countOfItems: news.count) {
+            if news.items.count != news.totalCount {
                 news.page += 1
                 Task(priority: .background) {
                     do {
@@ -37,6 +36,8 @@ import UIKit
                         
                         self.news?.count = fetched.items.count
                         self.news?.items.append(contentsOf: fetched.items)
+                        
+                        success()
                     } catch {
                         self.error = error.localizedDescription
                     }

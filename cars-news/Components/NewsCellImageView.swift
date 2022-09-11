@@ -25,8 +25,9 @@ final class NewsCellImageView: UIImageView {
         }
     }
     
+    @MainActor
     private func getImage(url: String) async -> UIImage? {
-        self.imageTask = Task(priority: .background) {
+        self.imageTask = Task {
             [weak self] in
             guard let self = self else { return Icons.goBack.icon! }
             do {

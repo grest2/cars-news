@@ -48,6 +48,10 @@ final class NewsFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.newsViewModel.fetch() {
+            self.refereshCollectionView()
+        }
+        
         self.addSpinner()
         self.setupCollectionViewLayout()
         self.errorCard.initialize()
@@ -78,13 +82,13 @@ final class NewsFeedViewController: UIViewController {
     }
     
     private func observeToNews() {
-        self.cancellableNews = self.newsViewModel.$news.sink(receiveValue: {
-            [weak self] news in
-            
-            if news?.items.count ?? 0 > 0 {
-                self?.refereshCollectionView()
-            }
-        })
+//        self.cancellableNews = self.newsViewModel.$news.sink(receiveValue: {
+//            [weak self] news in
+//            
+//            if news?.items.count ?? 0 > 0 {
+//                self?.refereshCollectionView()
+//            }
+//        })
         
         self.cancellableError = self.newsViewModel.$error.sink(receiveValue: {
             [weak self] error in
@@ -155,20 +159,22 @@ extension NewsFeedViewController: CollectionViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let height = scrollView.frame.size.height
-        
+        let height = scrollView.frame.height
+
         let bottomDistance = scrollView.contentSize.height - scrollView.contentOffset.y
-        
+
         if bottomDistance < height {
-            self.newsViewModel.fetch()
-            
+            self.newsViewModel.fetch() {
+                self.refereshCollectionView()
+            }
+
             self.refereshCollectionView()
         }
     }
-    
+
     private func refereshCollectionView() {
-        self.spinner.stopAnimating()
         DispatchQueue.main.async {
+            self.spinner.stopAnimating()
             self.collectionView.reloadData()
         }
     }
