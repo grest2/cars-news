@@ -12,6 +12,7 @@ typealias CollectionViewDelegate = UICollectionViewDelegate & UICollectionViewDa
 
 class NewsFeedViewController: UIViewController {
     @IBOutlet weak var header: Header!
+    @IBOutlet weak var errorCard: ErrorCard!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let cache: NSCache = NSCache<AnyObject, UIImage>()
@@ -49,6 +50,7 @@ class NewsFeedViewController: UIViewController {
         
         self.addSpinner()
         self.setupCollectionViewLayout()
+        self.errorCard.initialize()
         
         self.observeToNews()
         

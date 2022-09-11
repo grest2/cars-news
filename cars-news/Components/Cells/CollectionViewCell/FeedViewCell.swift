@@ -83,7 +83,7 @@ final class FeedViewCell: UICollectionViewCell {
         self.newsTitle.text = title
         self.newsSubtitle.text = subtitle.formatToDate()
         
-        self.imageView.getImage(url: url, id: id)
+        self.imageView.getImage(url: url)
     }
     
     /// Set image for news cell

@@ -45,6 +45,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmd-mX-Jqa" customClass="ErrorCard" customModule="cars_news" customModuleProvider="target">
+                                <rect key="frame" x="24" y="378" width="366" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Ie4-re-tJI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4Cd-DD-DXU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -52,14 +59,19 @@
                             <constraint firstAttribute="trailing" secondItem="eWO-bN-MR6" secondAttribute="trailing" constant="12" id="2Tx-0m-oe4"/>
                             <constraint firstAttribute="trailing" secondItem="edt-TP-Z9Q" secondAttribute="trailing" id="BXd-aq-fjh"/>
                             <constraint firstItem="eWO-bN-MR6" firstAttribute="top" secondItem="edt-TP-Z9Q" secondAttribute="bottom" constant="8" id="K9f-Wz-7Ma"/>
+                            <constraint firstItem="cmd-mX-Jqa" firstAttribute="leading" secondItem="4Cd-DD-DXU" secondAttribute="leading" constant="24" id="MTp-tn-zPe"/>
                             <constraint firstItem="edt-TP-Z9Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Snv-uc-cRd"/>
+                            <constraint firstItem="cmd-mX-Jqa" firstAttribute="centerX" secondItem="4Cd-DD-DXU" secondAttribute="centerX" id="TE4-Te-A3P"/>
+                            <constraint firstItem="cmd-mX-Jqa" firstAttribute="centerY" secondItem="4Cd-DD-DXU" secondAttribute="centerY" id="XZr-am-DLS"/>
                             <constraint firstItem="edt-TP-Z9Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Xkn-tf-V3k"/>
                             <constraint firstAttribute="bottom" secondItem="eWO-bN-MR6" secondAttribute="bottom" id="ho8-rP-TDz"/>
                             <constraint firstItem="eWO-bN-MR6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="pg9-5W-k1s"/>
+                            <constraint firstItem="4Cd-DD-DXU" firstAttribute="trailing" secondItem="cmd-mX-Jqa" secondAttribute="trailing" constant="24" id="xs0-Zg-Myp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="eWO-bN-MR6" id="e3Y-nq-QkW"/>
+                        <outlet property="errorCard" destination="cmd-mX-Jqa" id="3wl-Kg-b9Q"/>
                         <outlet property="header" destination="edt-TP-Z9Q" id="kv1-nk-Vlm"/>
                         <segue destination="Xqw-0D-wPf" kind="presentation" identifier="showNews" modalPresentationStyle="fullScreen" id="oHq-Kp-h4p"/>
                     </connections>

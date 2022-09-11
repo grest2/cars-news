@@ -13,11 +13,11 @@ final class NewsCellImageView: UIImageView {
     
     private let requestManager: RequestManaging = DependencyContainer.resolve()
     
-    func getImage(url: String, id: Int) {
+    func getImage(url: String) {
         image = Icons.fallback.icon
         
-        Task(priority: .high) {
-            let image = await self.getImage(url: url, id: id)
+        Task(priority: .background) {
+            let image = await self.getImage(url: url)
             
             DispatchQueue.main.async {
                 self.image = image
@@ -25,8 +25,8 @@ final class NewsCellImageView: UIImageView {
         }
     }
     
-    private func getImage(url: String, id: Int) async -> UIImage? {
-        self.imageTask = Task(priority: .high) {
+    private func getImage(url: String) async -> UIImage? {
+        self.imageTask = Task(priority: .background) {
             [weak self] in
             guard let self = self else { return Icons.goBack.icon! }
             do {
