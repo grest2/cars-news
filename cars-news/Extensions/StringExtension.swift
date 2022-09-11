@@ -16,8 +16,6 @@ extension String {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         let converted = formatter.date(from: self)
-        formatter.timeStyle = .none
-        
         
         return converted?.formatted() ?? "Недавно"
     }

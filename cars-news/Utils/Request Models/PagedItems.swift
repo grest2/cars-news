@@ -24,3 +24,4 @@ class PagedItems<T: Decodable>: Decodable {
         self.items = []
     }
 }
+

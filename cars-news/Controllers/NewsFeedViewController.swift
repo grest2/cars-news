@@ -119,7 +119,6 @@ extension NewsFeedViewController: CollectionViewDelegate {
             let item = self.newsViewModel.news?.items[indexPath.row]
             newsCell.setNewsInfo(news: item?.title ?? "Новость о машине", subtitle: item?.publishedDate ?? "Сегодня", id: item?.id ?? -1, url: item?.titleImageUrl ?? "")
             
-            
             return newsCell
         }
         return UICollectionViewCell()
@@ -135,7 +134,6 @@ extension NewsFeedViewController: CollectionViewDelegate {
         let bottomDistance = scrollView.contentSize.height - scrollView.contentOffset.y
         
         if bottomDistance < height {
-            self.spinner.startAnimating()
             self.newsViewModel.fetch()
             
             self.refereshCollectionView()

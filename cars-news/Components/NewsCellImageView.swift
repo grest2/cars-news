@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-let cache = NSCache<AnyObject, UIImage>()
-
 final class NewsCellImageView: UIImageView {
     private var imageTask: Task<UIImage, Error>?
     
@@ -18,8 +16,8 @@ final class NewsCellImageView: UIImageView {
     func getImage(url: String, id: Int) {
         image = Icons.fallback.icon
         
-        Task(priority: .userInitiated) {
-            let image = try? await self.getImage(url: url, id: id)
+        Task(priority: .high) {
+            let image = await self.getImage(url: url, id: id)
             
             DispatchQueue.main.async {
                 self.image = image
@@ -28,7 +26,7 @@ final class NewsCellImageView: UIImageView {
     }
     
     private func getImage(url: String, id: Int) async -> UIImage? {
-        self.imageTask = Task(priority: .background) {
+        self.imageTask = Task(priority: .high) {
             [weak self] in
             guard let self = self else { return Icons.goBack.icon! }
             do {

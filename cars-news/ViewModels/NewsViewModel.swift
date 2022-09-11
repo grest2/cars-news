@@ -23,7 +23,7 @@ import UIKit
         if self.news == nil {
             Task(priority: .background) {
                 do {
-                    self.news = try await self.requestManager.fetchItems(type: News.self, page: 1, count: 15)
+                    self.news = try await self.requestManager.fetchItems(type: News.self, page: 1, count: 10)
                 } catch {
                     self.error = error.localizedDescription
                 }
