@@ -18,16 +18,12 @@ final class NewsCellImageView: UIImageView {
         image = Icons.fallback.icon
         
         Task {
-            let image = await self.getImage(url: url)
-            
-            DispatchQueue.main.async {
-                self.image = image
-            }
+            self.image = await self.getImage(url: url)
         }
     }
     
     private func getImage(url: String) async -> UIImage? {
-        self.imageTask = Task(priority: .background) {
+        self.imageTask = Task {
             [weak self] in
             guard let self = self else { return Icons.goBack.icon! }
             do {

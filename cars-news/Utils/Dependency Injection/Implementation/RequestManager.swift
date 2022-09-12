@@ -35,7 +35,6 @@ class RequestManager: RequestManaging {
     
     func getImage(url: String) async throws -> UIImage {
         let response = try await self.requestService.get(url: url)
-        
         switch response {
         case .error(let message):
             throw AppErrors.request(message: message)
