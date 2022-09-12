@@ -82,14 +82,9 @@ final class FeedViewCell: UICollectionViewCell {
     public func setNewsInfo(news title: String, subtitle: String, id: Int, url: String) {
         self.newsTitle.text = title
         self.newsSubtitle.text = subtitle.formatToDate()
+        self.imageView.image = Icons.fallback.icon
         
         self.imageView.getImage(url: url)
-    }
-    
-    /// Set image for news cell
-    /// - Parameter image: downloaded image by url from model
-    public func setImage(image: UIImage?) {
-        self.imageView.image = image
     }
     
     // MARK: private methods

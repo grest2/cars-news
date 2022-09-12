@@ -82,14 +82,6 @@ final class NewsFeedViewController: UIViewController {
     }
     
     private func observeToNews() {
-//        self.cancellableNews = self.newsViewModel.$news.sink(receiveValue: {
-//            [weak self] news in
-//            
-//            if news?.items.count ?? 0 > 0 {
-//                self?.refereshCollectionView()
-//            }
-//        })
-        
         self.cancellableError = self.newsViewModel.$error.sink(receiveValue: {
             [weak self] error in
             
@@ -106,6 +98,8 @@ final class NewsFeedViewController: UIViewController {
         
         self.spinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         self.spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        self.view.bringSubviewToFront(self.spinner)
         
         self.spinner.startAnimating()
     }
@@ -158,12 +152,9 @@ extension NewsFeedViewController: CollectionViewDelegate {
         self.newsViewModel.news?.items.count ?? 0
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let height = scrollView.frame.height
-
-        let bottomDistance = scrollView.contentSize.height - scrollView.contentOffset.y
-
-        if bottomDistance < height {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == (self.newsViewModel.news?.items.count ?? 0) - 1 {
+            self.spinner.startAnimating()
             self.newsViewModel.fetch() {
                 self.refereshCollectionView()
             }

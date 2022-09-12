@@ -222,10 +222,10 @@
             filePath = "cars-news/Components/Cells/CollectionViewCell/FeedViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "setNewsInfo(news:subtitle:id:url:)"
-            landmarkType = "7">
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "FeedViewCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,10 +346,10 @@
             filePath = "cars-news/Controllers/NewsFeedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "scrollViewDidScroll(_:)"
-            landmarkType = "7">
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "NewsFeedViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -394,8 +394,8 @@
             filePath = "cars-news/Controllers/NewsFeedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,8 +474,8 @@
             filePath = "cars-news/Controllers/NewsFeedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "refereshCollectionView()"
             landmarkType = "7">
          </BreakpointContent>
