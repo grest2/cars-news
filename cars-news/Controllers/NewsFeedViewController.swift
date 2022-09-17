@@ -15,6 +15,10 @@ final class NewsFeedViewController: UIViewController {
     @IBOutlet weak var header: Header!
     @IBOutlet weak var errorCard: ErrorCard!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    @IBOutlet weak var bottomSpinnerConstraint: NSLayoutConstraint!
+    @IBOutlet weak var centerYspinnerConstraint: NSLayoutConstraint!
     
     private lazy var diffableDataSource: NewsDataSource = self.initializeDataSource(collectionView: self.collectionView)
     
@@ -23,14 +27,6 @@ final class NewsFeedViewController: UIViewController {
     private var cancellableError: AnyCancellable?
     
     private let newsViewModel: NewsViewModel = NewsViewModel()
-    
-    private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .large)
-        
-        spinner.color = Colors.newsCellShadow.color
-        
-        return spinner
-    }()
     
     private let collectionViewLayout: UICollectionViewLayout = {
         let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(2/3))
@@ -55,7 +51,7 @@ final class NewsFeedViewController: UIViewController {
             self.spinner.stopAnimating()
         }
         
-        self.addSpinner()
+        self.setupSpinner()
         self.setupCollectionViewLayout()
         self.errorCard.initialize()
         
@@ -71,8 +67,9 @@ final class NewsFeedViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        if self.newsViewModel.news != nil {
-            self.spinner.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        if self.newsViewModel.news != nil && self.centerYspinnerConstraint.isActive {
+            self.centerYspinnerConstraint.isActive = false
+            self.bottomSpinnerConstraint.isActive = true
         }
     }
     
@@ -105,18 +102,6 @@ final class NewsFeedViewController: UIViewController {
         })
     }
     
-    private func addSpinner() {
-        self.spinner.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(self.spinner)
-        
-        self.spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        
-        self.view.bringSubviewToFront(self.spinner)
-        
-        self.spinner.startAnimating()
-    }
-    
     private func showError(error: String) {
         self.errorCard.isHidden = false
         
@@ -125,6 +110,12 @@ final class NewsFeedViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.errorCard.isHidden = true
         }
+    }
+    
+    private func setupSpinner() {
+        self.spinner.hidesWhenStopped = true
+        self.spinner.color = Colors.newsCellShadow.color
+        self.spinner.startAnimating()
     }
     
     private func updateSnapshot() {
