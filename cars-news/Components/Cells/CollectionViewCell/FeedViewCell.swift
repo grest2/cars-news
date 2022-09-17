@@ -56,7 +56,6 @@ final class FeedViewCell: UICollectionViewCell {
         return stack
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

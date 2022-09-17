@@ -109,7 +109,6 @@ final class NewsView: UIView {
         self.publishedDateNews.text = "Дата размещения: \(date.formatToDate())"
         self.srcUrl = fullUrl
         
-        
         self.setupStyle()
     }
     

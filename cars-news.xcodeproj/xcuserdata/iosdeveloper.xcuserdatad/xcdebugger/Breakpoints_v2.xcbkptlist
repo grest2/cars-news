@@ -222,8 +222,8 @@
             filePath = "cars-news/Components/Cells/CollectionViewCell/FeedViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "setNewsInfo(news:subtitle:id:url:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -273,22 +273,6 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "scrollViewDidScroll(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AD8C7B4F-0716-4CAC-B006-9931147D87BA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cars-news/Components/Views/NewsView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "initialize(image:title:body:date:fullUrl:category:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -394,8 +378,8 @@
             filePath = "cars-news/Components/Cells/CollectionViewCell/FeedViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "setNewsInfo(news:subtitle:id:url:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,8 +394,8 @@
             filePath = "cars-news/Components/Cells/CollectionViewCell/FeedViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "setNewsInfo(news:subtitle:id:url:)"
             landmarkType = "7">
          </BreakpointContent>
