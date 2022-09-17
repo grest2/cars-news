@@ -9,17 +9,17 @@ import UIKit
 import Combine
 
 typealias CollectionViewDelegate = UICollectionViewDelegate
+typealias NewsDataSource = UICollectionViewDiffableDataSource<SectionNewsFeed, News>
 
 final class NewsFeedViewController: UIViewController {
     @IBOutlet weak var header: Header!
     @IBOutlet weak var errorCard: ErrorCard!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private lazy var diffableDataSource: UICollectionViewDiffableDataSource<SectionNewsFeed, News> = self.initializeDataSource(collectionView: self.collectionView)
+    private lazy var diffableDataSource: NewsDataSource = self.initializeDataSource(collectionView: self.collectionView)
     
     private var selected: NewsViewInfo?
     
-    private var cancellableNews: AnyCancellable?
     private var cancellableError: AnyCancellable?
     
     private let newsViewModel: NewsViewModel = NewsViewModel()
@@ -61,14 +61,25 @@ final class NewsFeedViewController: UIViewController {
         
         self.observeToNews()
         
-        self.view.backgroundColor = Colors.background.color
+        self.view.backgroundColor = Colors.headerBackground.color
         
         self.header.initialize(text: "Последние новости")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.cancellableError?.cancel()
-        self.cancellableNews?.cancel()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if self.newsViewModel.news != nil {
+            self.spinner.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? NewsViewController {
+            dest.selected = self.selected
+        }
     }
     
     // MARK: private methods of news feed view controller
@@ -80,7 +91,7 @@ final class NewsFeedViewController: UIViewController {
         
         self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
         
-        self.collectionView.backgroundColor = UIColor.clear
+        self.collectionView.backgroundColor = Colors.background.color
         self.collectionView.showsVerticalScrollIndicator = false
     }
     
@@ -99,7 +110,6 @@ final class NewsFeedViewController: UIViewController {
         
         self.view.addSubview(self.spinner)
         
-        self.spinner.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         self.spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         self.view.bringSubviewToFront(self.spinner)
@@ -128,12 +138,6 @@ final class NewsFeedViewController: UIViewController {
 
 // MARK: Collection View delegate and data source implementation
 extension NewsFeedViewController: CollectionViewDelegate {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? NewsViewController {
-            dest.selected = self.selected
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? FeedViewCell else { return }
         
@@ -151,7 +155,7 @@ extension NewsFeedViewController: CollectionViewDelegate {
         }
     }
     
-    func initializeDataSource(collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<SectionNewsFeed, News> {
+    func initializeDataSource(collectionView: UICollectionView) -> NewsDataSource {
         let dataSource = UICollectionViewDiffableDataSource<SectionNewsFeed, News>(collectionView: self.collectionView) {
             (collectionView, indexPath, info) -> UICollectionViewCell? in
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {

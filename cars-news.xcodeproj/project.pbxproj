@@ -14,8 +14,6 @@
 		44454A7E28C2384100FC7ED4 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44454A7D28C2384100FC7ED4 /* NewsView.swift */; };
 		44454A8128C2422400FC7ED4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44454A8028C2422400FC7ED4 /* NewsViewController.swift */; };
 		4457EAF42893215700B890FC /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457EAF32893215700B890FC /* NewsViewModel.swift */; };
-		4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */; };
-		4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469D30228902FB800BBD7E1 /* DependencyContainer.swift */; };
 		44948B5328CDF1E1008D51DF /* ErrorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44948B5228CDF1E1008D51DF /* ErrorCard.swift */; };
 		4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE7C288F259C00C95E4C /* AppDelegate.swift */; };
 		4496BE7F288F259C00C95E4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496BE7E288F259C00C95E4C /* SceneDelegate.swift */; };
@@ -65,8 +63,6 @@
 		44454A7D28C2384100FC7ED4 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		44454A8028C2422400FC7ED4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		4457EAF32893215700B890FC /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
-		4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServicing.swift; sourceTree = "<group>"; };
-		4469D30228902FB800BBD7E1 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		44948B5228CDF1E1008D51DF /* ErrorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCard.swift; sourceTree = "<group>"; };
 		4496BE79288F259C00C95E4C /* cars-news.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cars-news.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4496BE7C288F259C00C95E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,15 +161,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		4469D2FD28902DFA00BBD7E1 /* Container dependecies */ = {
-			isa = PBXGroup;
-			children = (
-				4469D2FE28902E4700BBD7E1 /* RegisterServicing.swift */,
-				4469D30228902FB800BBD7E1 /* DependencyContainer.swift */,
-			);
-			path = "Container dependecies";
-			sourceTree = "<group>";
-		};
 		4496BE70288F259C00C95E4C = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +240,6 @@
 		4496BEB0288F28AF00C95E4C /* Dependency Injection */ = {
 			isa = PBXGroup;
 			children = (
-				4469D2FD28902DFA00BBD7E1 /* Container dependecies */,
 				4496BEB2288F290400C95E4C /* Implementation */,
 				4496BEB1288F28EF00C95E4C /* Protocols */,
 			);
@@ -455,7 +441,6 @@
 				44454A7C28C22FB200FC7ED4 /* Header.swift in Sources */,
 				4496BE81288F259C00C95E4C /* NewsFeedViewController.swift in Sources */,
 				440F19AC28AC26520049A2EE /* Colors.swift in Sources */,
-				4469D2FF28902E4700BBD7E1 /* RegisterServicing.swift in Sources */,
 				443E53AB28986B1800163ECF /* FeedViewCell.swift in Sources */,
 				4496BE7D288F259C00C95E4C /* AppDelegate.swift in Sources */,
 				4496BEAE288F271400C95E4C /* News.swift in Sources */,
@@ -464,7 +449,6 @@
 				4496BEB4288F291900C95E4C /* RequestServicing.swift in Sources */,
 				44C33942289C54EE00ADBE7A /* StringExtension.swift in Sources */,
 				441053E928D5BF98000B008F /* DiffableDataSource.swift in Sources */,
-				4469D30328902FB800BBD7E1 /* DependencyContainer.swift in Sources */,
 				4496BE7F288F259C00C95E4C /* SceneDelegate.swift in Sources */,
 				44454A7E28C2384100FC7ED4 /* NewsView.swift in Sources */,
 				4496BEC0288F3C3200C95E4C /* Errors.swift in Sources */,

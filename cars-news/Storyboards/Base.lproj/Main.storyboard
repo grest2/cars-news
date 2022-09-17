@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edt-TP-Z9Q" userLabel="Header" customClass="Header" customModule="cars_news" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="4ws-04-Yhr"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-bN-MR6">
-                                <rect key="frame" x="0.0" y="68" width="402" height="828"/>
+                                <rect key="frame" x="0.0" y="112" width="414" height="784"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yb8-Vz-etM">
                                     <size key="itemSize" width="128" height="128"/>
@@ -54,16 +54,16 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4Cd-DD-DXU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eWO-bN-MR6" secondAttribute="trailing" constant="12" id="2Tx-0m-oe4"/>
+                            <constraint firstAttribute="trailing" secondItem="eWO-bN-MR6" secondAttribute="trailing" id="2Tx-0m-oe4"/>
                             <constraint firstAttribute="trailing" secondItem="edt-TP-Z9Q" secondAttribute="trailing" id="BXd-aq-fjh"/>
                             <constraint firstItem="eWO-bN-MR6" firstAttribute="top" secondItem="edt-TP-Z9Q" secondAttribute="bottom" constant="8" id="K9f-Wz-7Ma"/>
                             <constraint firstItem="cmd-mX-Jqa" firstAttribute="leading" secondItem="4Cd-DD-DXU" secondAttribute="leading" constant="24" id="MTp-tn-zPe"/>
                             <constraint firstItem="edt-TP-Z9Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Snv-uc-cRd"/>
                             <constraint firstItem="cmd-mX-Jqa" firstAttribute="centerX" secondItem="4Cd-DD-DXU" secondAttribute="centerX" id="TE4-Te-A3P"/>
                             <constraint firstItem="cmd-mX-Jqa" firstAttribute="centerY" secondItem="4Cd-DD-DXU" secondAttribute="centerY" id="XZr-am-DLS"/>
-                            <constraint firstItem="edt-TP-Z9Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Xkn-tf-V3k"/>
+                            <constraint firstItem="edt-TP-Z9Q" firstAttribute="top" secondItem="4Cd-DD-DXU" secondAttribute="top" id="Xkn-tf-V3k"/>
                             <constraint firstAttribute="bottom" secondItem="eWO-bN-MR6" secondAttribute="bottom" id="ho8-rP-TDz"/>
                             <constraint firstItem="eWO-bN-MR6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pg9-5W-k1s"/>
                             <constraint firstItem="4Cd-DD-DXU" firstAttribute="trailing" secondItem="cmd-mX-Jqa" secondAttribute="trailing" constant="24" id="xs0-Zg-Myp"/>
