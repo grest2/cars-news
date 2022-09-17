@@ -8,12 +8,14 @@
 import UIKit
 import Combine
 
-typealias CollectionViewDelegate = UICollectionViewDelegate & UICollectionViewDataSource
+typealias CollectionViewDelegate = UICollectionViewDelegate
 
 final class NewsFeedViewController: UIViewController {
     @IBOutlet weak var header: Header!
     @IBOutlet weak var errorCard: ErrorCard!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    private lazy var diffableDataSource: UICollectionViewDiffableDataSource<SectionNewsFeed, News> = self.initializeDataSource(collectionView: self.collectionView)
     
     private var selected: NewsViewInfo?
     
@@ -49,6 +51,7 @@ final class NewsFeedViewController: UIViewController {
         super.viewDidLoad()
         
         self.newsViewModel.fetch() {
+            self.updateSnapshot()
             self.refereshCollectionView()
         }
         
@@ -73,7 +76,8 @@ final class NewsFeedViewController: UIViewController {
         self.collectionView.register(FeedViewCell.self, forCellWithReuseIdentifier: "newsCell")
         
         self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+//        self.collectionView.dataSource = self
+        self.collectionView.dataSource = self.diffableDataSource
         
         self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
         
@@ -113,6 +117,14 @@ final class NewsFeedViewController: UIViewController {
             self.errorCard.isHidden = true
         }
     }
+    
+    private func updateSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<SectionNewsFeed, News>()
+        snapshot.appendSections([.default])
+        snapshot.appendItems(self.newsViewModel.news?.items ?? [], toSection: .default)
+        
+        self.diffableDataSource.apply(snapshot, animatingDifferences: true)
+    }
 }
 
 // MARK: Collection View delegate and data source implementation
@@ -138,14 +150,19 @@ extension NewsFeedViewController: CollectionViewDelegate {
         self.performSegue(withIdentifier: "showNews", sender: nil)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
-            let item = self.newsViewModel.news?.items[indexPath.row]
-            newsCell.setNewsInfo(news: item?.title ?? "Новость о машине", subtitle: item?.publishedDate ?? "Сегодня", id: item?.id ?? -1, url: item?.titleImageUrl ?? "")
+    func initializeDataSource(collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<SectionNewsFeed, News> {
+        let dataSource = UICollectionViewDiffableDataSource<SectionNewsFeed, News>(collectionView: self.collectionView) {
+            (collectionView, indexPath, info) -> UICollectionViewCell? in
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
+                cell.setNewsInfo(news: info.title, subtitle: info.publishedDate, id: info.id, url: info.titleImageUrl)
+                
+                return cell
+            }
             
-            return newsCell
+            return UICollectionViewCell()
         }
-        return UICollectionViewCell()
+        
+        return dataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -168,3 +185,4 @@ extension NewsFeedViewController: CollectionViewDelegate {
         }
     }
 }
+
