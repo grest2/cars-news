@@ -52,7 +52,8 @@ final class NewsFeedViewController: UIViewController {
         
         self.newsViewModel.fetch() {
             self.updateSnapshot()
-            self.refereshCollectionView()
+            self.spinner.stopAnimating()
+//            self.refereshCollectionView()
         }
         
         self.addSpinner()
@@ -173,15 +174,9 @@ extension NewsFeedViewController: CollectionViewDelegate {
         if indexPath.row == (self.newsViewModel.news?.items.count ?? 0) - 1 {
             self.spinner.startAnimating()
             self.newsViewModel.fetch() {
-                self.refereshCollectionView()
+                self.updateSnapshot()
+                self.spinner.stopAnimating()
             }
-        }
-    }
-
-    private func refereshCollectionView() {
-        DispatchQueue.main.async {
-            self.spinner.stopAnimating()
-            self.collectionView.reloadData()
         }
     }
 }
