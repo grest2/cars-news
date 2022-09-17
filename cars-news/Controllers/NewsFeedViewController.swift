@@ -160,10 +160,6 @@ extension NewsFeedViewController: CollectionViewDelegate {
         return dataSource
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.newsViewModel.news?.items.count ?? 0
-    }
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == (self.newsViewModel.news?.items.count ?? 0) - 1 {
             self.spinner.startAnimating()
