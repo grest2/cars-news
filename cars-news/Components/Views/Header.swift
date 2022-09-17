@@ -33,7 +33,6 @@ final class Header: UIView {
         
         self.title.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        self.title.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 12).isActive = true
         self.title.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         
         self.backgroundColor = Colors.headerBackground.color

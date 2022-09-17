@@ -123,9 +123,6 @@ final class FeedViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 12
         self.layer.borderColor = UIColor.clear.cgColor
         
-        self.layer.shadowColor = Colors.newsCellShadow.color.cgColor
-        self.layer.shadowOpacity = 1
-        self.layer.shadowOffset = CGSize(width: -2, height: 4)
-        self.layer.shadowRadius = 4
+        self.shadowLayerCellSetup()
     }
 }
