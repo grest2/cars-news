@@ -13,6 +13,7 @@ class RequestService: RequestServicing {
         
         var req = URLRequest(url: url)
         req.httpMethod = "get"
+        req.timeoutInterval = 20
         
         let result: Result = try await URLSession.shared.data(for: req)
         

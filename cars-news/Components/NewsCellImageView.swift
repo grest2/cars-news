@@ -41,5 +41,6 @@ final class NewsCellImageView: UIImageView {
     func cancelImageFetching() {
         self.imageTask?.cancel()
         self.imageTask = nil
+        self.image = Icons.fallback.icon
     }
 }
