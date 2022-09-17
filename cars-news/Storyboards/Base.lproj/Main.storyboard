@@ -26,7 +26,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-bN-MR6">
-                                <rect key="frame" x="12" y="68" width="390" height="828"/>
+                                <rect key="frame" x="0.0" y="68" width="402" height="828"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yb8-Vz-etM">
                                     <size key="itemSize" width="128" height="128"/>
@@ -65,7 +65,7 @@
                             <constraint firstItem="cmd-mX-Jqa" firstAttribute="centerY" secondItem="4Cd-DD-DXU" secondAttribute="centerY" id="XZr-am-DLS"/>
                             <constraint firstItem="edt-TP-Z9Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Xkn-tf-V3k"/>
                             <constraint firstAttribute="bottom" secondItem="eWO-bN-MR6" secondAttribute="bottom" id="ho8-rP-TDz"/>
-                            <constraint firstItem="eWO-bN-MR6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="pg9-5W-k1s"/>
+                            <constraint firstItem="eWO-bN-MR6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pg9-5W-k1s"/>
                             <constraint firstItem="4Cd-DD-DXU" firstAttribute="trailing" secondItem="cmd-mX-Jqa" secondAttribute="trailing" constant="24" id="xs0-Zg-Myp"/>
                         </constraints>
                     </view>

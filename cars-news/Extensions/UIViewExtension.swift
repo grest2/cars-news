@@ -25,4 +25,21 @@ extension UIView {
             completion()
         }
     }
+    
+    func selectionAnimating(_ completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.alpha = 0.7
+            self.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1)
+        }) {
+            _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.alpha = 1.0
+                self.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
+            }) {
+                _ in
+                
+                completion()
+            }
+        }
+    }
 }

@@ -53,7 +53,6 @@ final class NewsFeedViewController: UIViewController {
         self.newsViewModel.fetch() {
             self.updateSnapshot()
             self.spinner.stopAnimating()
-//            self.refereshCollectionView()
         }
         
         self.addSpinner()
@@ -77,7 +76,6 @@ final class NewsFeedViewController: UIViewController {
         self.collectionView.register(FeedViewCell.self, forCellWithReuseIdentifier: "newsCell")
         
         self.collectionView.delegate = self
-//        self.collectionView.dataSource = self
         self.collectionView.dataSource = self.diffableDataSource
         
         self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
@@ -148,7 +146,9 @@ extension NewsFeedViewController: CollectionViewDelegate {
                                      fullUrl: self.newsViewModel.news?.items[i].fullUrl,
                                      image: cell.image)
         
-        self.performSegue(withIdentifier: "showNews", sender: nil)
+        cell.selectionAnimating {
+            self.performSegue(withIdentifier: "showNews", sender: nil)
+        }
     }
     
     func initializeDataSource(collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<SectionNewsFeed, News> {
@@ -156,7 +156,6 @@ extension NewsFeedViewController: CollectionViewDelegate {
             (collectionView, indexPath, info) -> UICollectionViewCell? in
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
                 cell.setNewsInfo(news: info.title, subtitle: info.publishedDate, id: info.id, url: info.titleImageUrl)
-                
                 return cell
             }
             
