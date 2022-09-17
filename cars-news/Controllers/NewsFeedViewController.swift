@@ -11,7 +11,7 @@ import Combine
 typealias CollectionViewDelegate = UICollectionViewDelegate
 typealias NewsDataSource = UICollectionViewDiffableDataSource<SectionNewsFeed, News>
 
-final class NewsFeedViewController: UIViewController {
+final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
     @IBOutlet weak var header: Header!
     @IBOutlet weak var errorCard: ErrorCard!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,6 +19,8 @@ final class NewsFeedViewController: UIViewController {
     
     @IBOutlet weak var bottomSpinnerConstraint: NSLayoutConstraint!
     @IBOutlet weak var centerYspinnerConstraint: NSLayoutConstraint!
+    
+    private var selectedCells: [FeedViewCell] = []
     
     private lazy var diffableDataSource: NewsDataSource = self.initializeDataSource(collectionView: self.collectionView)
     
@@ -29,7 +31,7 @@ final class NewsFeedViewController: UIViewController {
     private let newsViewModel: NewsViewModel = NewsViewModel()
     
     private let collectionViewLayout: UICollectionViewLayout = {
-        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(2/3))
+        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16)
         
@@ -151,6 +153,7 @@ extension NewsFeedViewController: CollectionViewDelegate {
             (collectionView, indexPath, info) -> UICollectionViewCell? in
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
                 cell.setNewsInfo(news: info.title, subtitle: info.publishedDate, id: info.id, url: info.titleImageUrl)
+                cell.delegate = self
                 return cell
             }
             
@@ -166,6 +169,16 @@ extension NewsFeedViewController: CollectionViewDelegate {
             self.newsViewModel.fetch() {
                 self.updateSnapshot()
                 self.spinner.stopAnimating()
+            }
+        }
+    }
+    
+    func onLongTimePressure(cell: FeedViewCell) {
+        if self.selectedCells.contains(cell) {
+            cell.shadowLayerCellSetup()
+        } else {
+            cell.selectionAnimating {
+                self.selectedCells.append(cell)
             }
         }
     }

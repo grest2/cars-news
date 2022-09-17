@@ -13,6 +13,9 @@ final class FeedViewCell: UICollectionViewCell {
     public var image: UIImage? {
         self.imageView.image
     }
+    
+    public weak var delegate: FeedViewCellDelegate?
+    
     // MARK: UI props for cell
     private let imageView: NewsCellImageView = {
         let imageView = NewsCellImageView()
@@ -60,18 +63,21 @@ final class FeedViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.setupStyle()
+        self.setupGesture()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         self.setupStyle()
+        self.setupGesture()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         self.imageView.cancelImageFetching()
+        self.layersSetupStyle()
     }
     
     /// Set text to labels
@@ -116,6 +122,11 @@ final class FeedViewCell: UICollectionViewCell {
         self.backgroundColor = Colors.newsItemMain.color
     }
     
+    private func setupGesture() {
+        let longTap = UILongPressGestureRecognizer(target: self, action: #selector(onLongTap))
+        self.addGestureRecognizer(longTap)
+    }
+    
     /// Set up layers style for shadow and border
     private func layersSetupStyle() {
         self.layer.borderWidth = 1
@@ -123,5 +134,9 @@ final class FeedViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.clear.cgColor
         
         self.shadowLayerCellSetup()
+    }
+    
+    @objc private func onLongTap() {
+        self.delegate?.onLongTimePressure(cell: self)
     }
 }
