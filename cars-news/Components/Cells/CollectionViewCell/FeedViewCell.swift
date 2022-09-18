@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 final class FeedViewCell: UICollectionViewCell {
+    private(set) var id: Int = -1
     // MARK: public props
     public var image: UIImage? {
         self.imageView.image
@@ -88,6 +89,7 @@ final class FeedViewCell: UICollectionViewCell {
         self.newsTitle.text = title
         self.newsSubtitle.text = subtitle.formatToDate()
         self.imageView.image = Icons.fallback.icon
+        self.id = id
         
         self.imageView.getImage(url: url)
     }
@@ -137,6 +139,8 @@ final class FeedViewCell: UICollectionViewCell {
     }
     
     @objc private func onLongTap() {
-        self.delegate?.onLongTimePressure(cell: self)
+        self.delegate?.onLongTimePressure(id: self.id)
+        
+        self.selectionAnimating()
     }
 }

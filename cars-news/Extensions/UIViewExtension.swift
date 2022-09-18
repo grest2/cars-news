@@ -28,16 +28,7 @@ extension UIView {
     
     func selectionAnimating(_ completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.5, animations: {
-            self.alpha = 0.7
-            self.transform = CGAffineTransform.identity.scaledBy(x: 1.05, y: 1.05)
-            
-            self.layer.shadowOffset = CGSize(width: -4, height: 6)
-            self.layer.shadowRadius = 4
-            
-            self.layer.shadowColor = Colors.newsCellShadow.color.cgColor
-            self.layer.shadowOpacity = 1
-            self.layer.shadowOffset = CGSize(width: -4, height: 6)
-            self.layer.shadowRadius = 4
+            self.layerTappingSetup()
         }) {
             _ in
             UIView.animate(withDuration: 0.5, animations: {
@@ -53,24 +44,9 @@ extension UIView {
     }
     
     func selectionAnimating() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.alpha = 0.7
-            self.transform = CGAffineTransform.identity.scaledBy(x: 1.05, y: 1.05)
-            
-            self.layer.shadowOffset = CGSize(width: -4, height: 6)
-            self.layer.shadowRadius = 4
-            
+        UIView.animate(withDuration: 0.7, animations: {
             self.layer.shadowColor = Colors.newsCellShadow.color.cgColor
-            self.layer.shadowOpacity = 1
-            self.layer.shadowOffset = CGSize(width: -4, height: 6)
-            self.layer.shadowRadius = 4
-        }) {
-            _ in
-            UIView.animate(withDuration: 0.5, animations: {
-                self.alpha = 1.0
-                self.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
-            })
-        }
+        })
     }
     
     func shadowLayerCellSetup() {
@@ -78,5 +54,18 @@ extension UIView {
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize(width: -4, height: 6)
         self.layer.shadowRadius = 2
+    }
+    
+    private func layerTappingSetup() {
+        self.alpha = 0.7
+        self.transform = CGAffineTransform.identity.scaledBy(x: 1.05, y: 1.05)
+        
+        self.layer.shadowOffset = CGSize(width: -4, height: 6)
+        self.layer.shadowRadius = 4
+        
+        self.layer.shadowColor = Colors.newsCellShadow.color.cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.shadowOffset = CGSize(width: -4, height: 6)
+        self.layer.shadowRadius = 4
     }
 }

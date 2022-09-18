@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FeedViewCellDelegate: AnyObject {
-    func onLongTimePressure(cell: FeedViewCell)
+    func onLongTimePressure(id: Int)
 }

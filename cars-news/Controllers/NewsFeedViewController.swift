@@ -20,8 +20,6 @@ final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
     @IBOutlet weak var bottomSpinnerConstraint: NSLayoutConstraint!
     @IBOutlet weak var centerYspinnerConstraint: NSLayoutConstraint!
     
-    private var selectedCells: [FeedViewCell] = []
-    
     private lazy var diffableDataSource: NewsDataSource = self.initializeDataSource(collectionView: self.collectionView)
     
     private var selected: NewsViewInfo?
@@ -94,26 +92,6 @@ final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
         self.collectionView.showsVerticalScrollIndicator = false
     }
     
-    private func observeToNews() {
-        self.cancellableError = self.newsViewModel.$error.sink(receiveValue: {
-            [weak self] error in
-            
-            if let error = error, let self = self {
-                self.showError(error: error)
-            }
-        })
-    }
-    
-    private func showError(error: String) {
-        self.errorCard.isHidden = false
-        
-        self.errorCard.show(error: error)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.errorCard.isHidden = true
-        }
-    }
-    
     private func setupSpinner() {
         self.spinner.hidesWhenStopped = true
         self.spinner.color = Colors.newsCellShadow.color
@@ -127,6 +105,27 @@ final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
         
         self.diffableDataSource.apply(snapshot, animatingDifferences: true)
     }
+    
+    // MARK: View managament and utils
+    private func showError(error: String) {
+        self.errorCard.isHidden = false
+        
+        self.errorCard.show(error: error)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.errorCard.isHidden = true
+        }
+    }
+    
+    private func observeToNews() {
+        self.cancellableError = self.newsViewModel.$error.sink(receiveValue: {
+            [weak self] error in
+            
+            if let error = error, let self = self {
+                self.showError(error: error)
+            }
+        })
+    }
 }
 
 // MARK: Collection View delegate and data source implementation
@@ -134,17 +133,21 @@ extension NewsFeedViewController: CollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? FeedViewCell else { return }
         
-        let i = indexPath.row
-        
-        self.selected = NewsViewInfo(title: self.newsViewModel.news?.items[i].title,
-                                     body: self.newsViewModel.news?.items[i].description,
-                                     category: self.newsViewModel.news?.items[i].categoryType,
-                                     publishedDate: self.newsViewModel.news?.items[i].publishedDate,
-                                     fullUrl: self.newsViewModel.news?.items[i].fullUrl,
-                                     image: cell.image)
-        
-        cell.selectionAnimating {
-            self.performSegue(withIdentifier: "showNews", sender: nil)
+        if let index = self.newsViewModel.selected.firstIndex(of: (self.newsViewModel.news?.items ?? [])[indexPath.row].id) {
+            self.newsViewModel.removeAt(index)
+        } else {
+            let i = indexPath.row
+            
+            self.selected = NewsViewInfo(title: self.newsViewModel.news?.items[i].title,
+                                         body: self.newsViewModel.news?.items[i].description,
+                                         category: self.newsViewModel.news?.items[i].categoryType,
+                                         publishedDate: self.newsViewModel.news?.items[i].publishedDate,
+                                         fullUrl: self.newsViewModel.news?.items[i].fullUrl,
+                                         image: cell.image)
+            
+            cell.selectionAnimating {
+                self.performSegue(withIdentifier: "showNews", sender: nil)
+            }
         }
     }
     
@@ -154,6 +157,9 @@ extension NewsFeedViewController: CollectionViewDelegate {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as? FeedViewCell {
                 cell.setNewsInfo(news: info.title, subtitle: info.publishedDate, id: info.id, url: info.titleImageUrl)
                 cell.delegate = self
+                if self.newsViewModel.selected.contains(info.id) {
+                    cell.layer.shadowColor = Colors.newsCellShadow.color.cgColor
+                }
                 return cell
             }
             
@@ -172,14 +178,14 @@ extension NewsFeedViewController: CollectionViewDelegate {
             }
         }
     }
-    
-    func onLongTimePressure(cell: FeedViewCell) {
-        if self.selectedCells.contains(cell) {
-            cell.shadowLayerCellSetup()
+}
+// MARK: Collection view custom delegates methods implementation
+extension NewsFeedViewController {
+    func onLongTimePressure(id: Int) {
+        if let _ = self.newsViewModel.selected.firstIndex(of: id) {
+            return
         } else {
-            cell.selectionAnimating {
-                self.selectedCells.append(cell)
-            }
+            self.newsViewModel.addToSelected(id)
         }
     }
 }
