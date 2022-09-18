@@ -44,18 +44,18 @@ final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
     }()
     
     private let collectionViewLayoutIpad: UICollectionViewLayout = {
-        let verticalSpace: CGFloat = 12
+        let space: CGFloat = 12
         
-        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
+        let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1/3))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        group.interItemSpacing = .fixed(verticalSpace)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: layoutItem, count: 2)
+        group.interItemSpacing = .fixed(space)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: verticalSpace, leading: verticalSpace, bottom: verticalSpace, trailing: verticalSpace)
-        section.interGroupSpacing = verticalSpace
+        section.contentInsets = NSDirectionalEdgeInsets(top: space, leading: space, bottom: space, trailing: space)
+        section.interGroupSpacing = space
 
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
