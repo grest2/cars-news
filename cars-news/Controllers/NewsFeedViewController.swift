@@ -208,6 +208,7 @@ extension NewsFeedViewController: CollectionViewDelegate {
         }
     }
 }
+
 // MARK: Collection view custom delegates methods implementation
 extension NewsFeedViewController {
     func onLongTimePressure(id: Int) {

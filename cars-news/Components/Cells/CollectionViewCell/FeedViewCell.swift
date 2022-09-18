@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 
 final class FeedViewCell: UICollectionViewCell {
-    private(set) var id: Int = -1
     // MARK: public props
+    private(set) var id: Int = -1
+    
+    public weak var delegate: FeedViewCellDelegate?
+    
     public var image: UIImage? {
         self.imageView.image
     }
-    
-    public weak var delegate: FeedViewCellDelegate?
     
     // MARK: UI props for cell
     private let imageView: NewsCellImageView = {
