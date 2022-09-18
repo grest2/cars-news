@@ -7,7 +7,7 @@
 ![Запись экрана 2022-09-18 в 2 03 39 PM_Trim](https://user-images.githubusercontent.com/54187575/190899521-97686966-6cd6-45f2-b73b-1a0193ea4720.gif)
 
 ## iPhone SE
-![Запись экрана 2022-09-18 в 2 05 07 PM](https://user-images.githubusercontent.com/54187575/190899447-7e6daca8-db2c-45b7-98a6-17dce34b6df7.gif)
+![Запись экрана 2022-09-18 в 2 05 07 PM_Trim](https://user-images.githubusercontent.com/54187575/190900611-9e635a10-80dd-47dd-9f15-54e2718edad2.gif)
 
 ## iPad 12.9 inch 5th gen
 ![Запись экрана 2022-09-18 в 2 06 19 PM_Trim](https://user-images.githubusercontent.com/54187575/190899919-ee745eed-2b87-4682-b6a5-2c9e52c27fe2.gif)
