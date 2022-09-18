@@ -28,7 +28,7 @@ final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
     
     private let newsViewModel: NewsViewModel = NewsViewModel()
     
-    private let collectionViewLayout: UICollectionViewLayout = {
+    private let collectionViewLayoutIos: UICollectionViewLayout = {
         let layoutItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: layoutItemSize)
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16)
@@ -40,6 +40,24 @@ final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
         
         let layout = UICollectionViewCompositionalLayout(section: sectionLayout)
         
+        return layout
+    }()
+    
+    private let collectionViewLayoutIpad: UICollectionViewLayout = {
+        let verticalSpace: CGFloat = 12
+        
+        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1/3))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        group.interItemSpacing = .fixed(verticalSpace)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: verticalSpace, leading: verticalSpace, bottom: verticalSpace, trailing: verticalSpace)
+        section.interGroupSpacing = verticalSpace
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }()
     
@@ -86,7 +104,17 @@ final class NewsFeedViewController: UIViewController, FeedViewCellDelegate {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self.diffableDataSource
         
-        self.collectionView.setCollectionViewLayout(self.collectionViewLayout, animated: true)
+        switch self.view.traitCollection.horizontalSizeClass {
+        case .regular:
+            self.collectionView.setCollectionViewLayout(self.collectionViewLayoutIpad, animated: true)
+        case .compact:
+            self.collectionView.setCollectionViewLayout(self.collectionViewLayoutIos, animated: true)
+        case .unspecified:
+            self.collectionView.setCollectionViewLayout(self.collectionViewLayoutIos, animated: true)
+        @unknown default:
+            self.collectionView.setCollectionViewLayout(self.collectionViewLayoutIos, animated: true)
+        }
+        
         
         self.collectionView.backgroundColor = Colors.background.color
         self.collectionView.showsVerticalScrollIndicator = false
@@ -135,6 +163,7 @@ extension NewsFeedViewController: CollectionViewDelegate {
         
         if let index = self.newsViewModel.selected.firstIndex(of: (self.newsViewModel.news?.items ?? [])[indexPath.row].id) {
             self.newsViewModel.removeAt(index)
+            cell.shadowLayerCellSetup()
         } else {
             let i = indexPath.row
             
