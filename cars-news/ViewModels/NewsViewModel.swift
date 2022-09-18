@@ -13,7 +13,9 @@ import UIKit
     @Published private(set) var news: PagedItems<News>?
     @Published private(set) var error: String?
     
-    private let requestManager: RequestManaging = DependencyContainer.resolve()
+    private(set) var selected: [Int] = []
+    
+    private let requestManager: RequestManaging = RequestManager()
     
     func fetch(success: @escaping () -> Void) {
         if self.news == nil {
@@ -44,5 +46,13 @@ import UIKit
                 }
             }
         }
+    }
+    
+    func addToSelected(_ id: Int) {
+        self.selected.append(id)
+    }
+    
+    func removeAt(_ i: Int) {
+        self.selected.remove(at: i)
     }
 }

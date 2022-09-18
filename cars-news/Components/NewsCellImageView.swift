@@ -11,7 +11,7 @@ import UIKit
 final class NewsCellImageView: UIImageView {
     private var imageTask: Task<UIImage, Error>?
     
-    private let requestManager: RequestManaging = DependencyContainer.resolve()
+    private let requestManager: RequestManaging = RequestManager()
     
     @MainActor
     func getImage(url: String) {
@@ -41,5 +41,6 @@ final class NewsCellImageView: UIImageView {
     func cancelImageFetching() {
         self.imageTask?.cancel()
         self.imageTask = nil
+        self.image = Icons.fallback.icon
     }
 }

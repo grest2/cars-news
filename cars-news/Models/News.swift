@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct News: Decodable {
+struct News: Decodable, Hashable {
     var id: Int
     var title: String
     var description: String

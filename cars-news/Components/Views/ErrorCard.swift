@@ -34,7 +34,6 @@ final class ErrorCard: UIView {
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
         label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12).isActive = true
         
-        
         self.layer.cornerRadius = 8
         self.backgroundColor = Colors.headerBackground.color
     }

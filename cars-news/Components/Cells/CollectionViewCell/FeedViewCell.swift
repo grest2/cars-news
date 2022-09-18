@@ -9,10 +9,14 @@ import Foundation
 import UIKit
 
 final class FeedViewCell: UICollectionViewCell {
+    private(set) var id: Int = -1
     // MARK: public props
     public var image: UIImage? {
         self.imageView.image
     }
+    
+    public weak var delegate: FeedViewCellDelegate?
+    
     // MARK: UI props for cell
     private let imageView: NewsCellImageView = {
         let imageView = NewsCellImageView()
@@ -56,23 +60,25 @@ final class FeedViewCell: UICollectionViewCell {
         return stack
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.setupStyle()
+        self.setupGesture()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         self.setupStyle()
+        self.setupGesture()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         self.imageView.cancelImageFetching()
+        self.layersSetupStyle()
     }
     
     /// Set text to labels
@@ -83,6 +89,7 @@ final class FeedViewCell: UICollectionViewCell {
         self.newsTitle.text = title
         self.newsSubtitle.text = subtitle.formatToDate()
         self.imageView.image = Icons.fallback.icon
+        self.id = id
         
         self.imageView.getImage(url: url)
     }
@@ -117,15 +124,23 @@ final class FeedViewCell: UICollectionViewCell {
         self.backgroundColor = Colors.newsItemMain.color
     }
     
+    private func setupGesture() {
+        let longTap = UILongPressGestureRecognizer(target: self, action: #selector(onLongTap))
+        self.addGestureRecognizer(longTap)
+    }
+    
     /// Set up layers style for shadow and border
     private func layersSetupStyle() {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 12
         self.layer.borderColor = UIColor.clear.cgColor
         
-        self.layer.shadowColor = Colors.newsCellShadow.color.cgColor
-        self.layer.shadowOpacity = 1
-        self.layer.shadowOffset = CGSize(width: -2, height: 4)
-        self.layer.shadowRadius = 4
+        self.shadowLayerCellSetup()
+    }
+    
+    @objc private func onLongTap() {
+        self.delegate?.onLongTimePressure(id: self.id)
+        
+        self.selectionAnimating()
     }
 }

@@ -23,7 +23,7 @@ enum Colors {
             return UIColor(red: 1, green: 195/255, blue: 195/255, alpha: 1)
             
         case .background:
-            return UIColor(red: 255/255, green: 231/255, blue: 191/255, alpha: 1)
+            return UIColor(red: 1, green: 231/255, blue: 191/255, alpha: 1)
         
         case .light:
             return UIColor(red: 1, green: 140/255, blue: 140/255, alpha: 1)

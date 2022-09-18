@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edt-TP-Z9Q" userLabel="Header" customClass="Header" customModule="cars_news" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="30"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="4ws-04-Yhr"/>
+                                    <constraint firstAttribute="height" constant="30" id="hcC-Tv-FKy"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-bN-MR6">
-                                <rect key="frame" x="12" y="68" width="390" height="828"/>
+                                <rect key="frame" x="0.0" y="82" width="414" height="814"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yb8-Vz-etM">
                                     <size key="itemSize" width="128" height="128"/>
@@ -45,6 +45,9 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ajE-UW-gMo">
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmd-mX-Jqa" customClass="ErrorCard" customModule="cars_news" customModuleProvider="target">
                                 <rect key="frame" x="24" y="378" width="366" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -54,25 +57,36 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4Cd-DD-DXU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eWO-bN-MR6" secondAttribute="trailing" constant="12" id="2Tx-0m-oe4"/>
+                            <constraint firstAttribute="trailing" secondItem="eWO-bN-MR6" secondAttribute="trailing" id="2Tx-0m-oe4"/>
                             <constraint firstAttribute="trailing" secondItem="edt-TP-Z9Q" secondAttribute="trailing" id="BXd-aq-fjh"/>
                             <constraint firstItem="eWO-bN-MR6" firstAttribute="top" secondItem="edt-TP-Z9Q" secondAttribute="bottom" constant="8" id="K9f-Wz-7Ma"/>
                             <constraint firstItem="cmd-mX-Jqa" firstAttribute="leading" secondItem="4Cd-DD-DXU" secondAttribute="leading" constant="24" id="MTp-tn-zPe"/>
+                            <constraint firstItem="ajE-UW-gMo" firstAttribute="centerX" secondItem="4Cd-DD-DXU" secondAttribute="centerX" id="Si1-Ca-hck"/>
                             <constraint firstItem="edt-TP-Z9Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Snv-uc-cRd"/>
                             <constraint firstItem="cmd-mX-Jqa" firstAttribute="centerX" secondItem="4Cd-DD-DXU" secondAttribute="centerX" id="TE4-Te-A3P"/>
                             <constraint firstItem="cmd-mX-Jqa" firstAttribute="centerY" secondItem="4Cd-DD-DXU" secondAttribute="centerY" id="XZr-am-DLS"/>
-                            <constraint firstItem="edt-TP-Z9Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Xkn-tf-V3k"/>
+                            <constraint firstItem="4Cd-DD-DXU" firstAttribute="bottom" secondItem="ajE-UW-gMo" secondAttribute="bottom" id="XeH-eN-XTT"/>
+                            <constraint firstItem="edt-TP-Z9Q" firstAttribute="top" secondItem="4Cd-DD-DXU" secondAttribute="top" id="Xkn-tf-V3k"/>
+                            <constraint firstItem="ajE-UW-gMo" firstAttribute="centerY" secondItem="4Cd-DD-DXU" secondAttribute="centerY" id="dLR-b4-sXc"/>
                             <constraint firstAttribute="bottom" secondItem="eWO-bN-MR6" secondAttribute="bottom" id="ho8-rP-TDz"/>
-                            <constraint firstItem="eWO-bN-MR6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="pg9-5W-k1s"/>
+                            <constraint firstItem="eWO-bN-MR6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pg9-5W-k1s"/>
                             <constraint firstItem="4Cd-DD-DXU" firstAttribute="trailing" secondItem="cmd-mX-Jqa" secondAttribute="trailing" constant="24" id="xs0-Zg-Myp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XeH-eN-XTT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomSpinnerConstraint" destination="XeH-eN-XTT" id="obX-f4-xaK"/>
+                        <outlet property="centerYspinnerConstraint" destination="dLR-b4-sXc" id="Nef-WI-3rV"/>
                         <outlet property="collectionView" destination="eWO-bN-MR6" id="e3Y-nq-QkW"/>
                         <outlet property="errorCard" destination="cmd-mX-Jqa" id="3wl-Kg-b9Q"/>
                         <outlet property="header" destination="edt-TP-Z9Q" id="kv1-nk-Vlm"/>
+                        <outlet property="spinner" destination="ajE-UW-gMo" id="eqn-Za-Kch"/>
                         <segue destination="Xqw-0D-wPf" kind="presentation" identifier="showNews" modalPresentationStyle="fullScreen" id="oHq-Kp-h4p"/>
                     </connections>
                 </viewController>

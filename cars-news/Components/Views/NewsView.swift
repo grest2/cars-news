@@ -109,7 +109,6 @@ final class NewsView: UIView {
         self.publishedDateNews.text = "Дата размещения: \(date.formatToDate())"
         self.srcUrl = fullUrl
         
-        
         self.setupStyle()
     }
     
@@ -138,7 +137,6 @@ final class NewsView: UIView {
         self.newsTextStack.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor, constant: 6).isActive = true
         self.newsTextStack.trailingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: -6).isActive = true
         self.newsTextStack.bottomAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: -12).isActive = true
-        self.newsTextStack.widthAnchor.constraint(equalTo: self.imageView.widthAnchor).isActive = true
         
         self.newsBodyStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 6).isActive = true
         self.newsBodyStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6).isActive = true
